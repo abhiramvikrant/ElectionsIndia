@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ElectionKioskListViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table-bordered">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BoothName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BoothName)
+            </td>
+            <td>
+                <a class="btn btn-info" asp-controller="ElectionKiosk" asp-action="Edit" asp-route-kioskid="@item.ElectionKioskId">Edit</a>
+                <a  class="btn btn-danger" asp-controller="ElectionKiosk" asp-action="Delete" asp-route-kioskid="@item.ElectionKioskId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

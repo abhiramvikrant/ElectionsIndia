@@ -1,0 +1,112 @@
+﻿@model IEnumerable<ElectionWardListViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.StateLanguageName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StateLanguageName_1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StateLanguageName_2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StateLanguageName_3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StateLanguagename_4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StateLanguageName_5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StateName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CountryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DistrictName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AreaName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.StateLanguageName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateLanguageName_1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateLanguageName_2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateLanguageName_3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateLanguagename_4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateLanguageName_5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DistrictName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AreaName)
+            </td>
+            <td>
+                <a asp-controller="ElectionWard" asp-action="Edit" class="btn btn-info" asp-route-electionwardid="@item.ElectionWardId">Edit</a>
+                <a asp-controller="ElectionWard" asp-action="Delete" class="btn btn-danger" asp-route-electionwardid="@item.ElectionWardId">Delete</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

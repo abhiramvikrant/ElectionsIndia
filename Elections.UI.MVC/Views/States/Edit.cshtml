@@ -1,0 +1,80 @@
+﻿@using ElectionsIndia.Models.ViewModels
+@model StatesEditViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>StatesEditViewModel</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+
+                <input id="hidStateID" asp-for="StateEnglishID" class="form-control" type="hidden" />
+                <input id="hidslangid" asp-for="StateLanguagesID" class="form-control" type="hidden" />
+                <input id="hidCountryID" asp-for="CountryID" type="hidden" />
+
+            </div>
+            <div class="form-group">
+                <label asp-for="StateName" class="control-label"></label>
+                <input asp-for="StateName" class="form-control" />
+                <span asp-validation-for="StateName" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            @if (Model.StateLanguagesID > 0)
+            {
+            <div  id="divLang "class="form-group">
+
+                <label asp-for="LanguageID" class="control-label">Select Language </label>
+                <select id="selLanguage" asp-for="LanguageID" class="form-control" asp-items="@(new SelectList(@ViewBag.LanguageList, "LanguageId", "Name", Model.LanguageID))"><option value="">Select Language</option></select>
+                <span asp-validation-for="LanguageID" class="text-danger"></span>
+
+            </div>
+            <div id="divSenglish" class="form-group">
+
+
+                <label asp-for="StateEnglishID" class="control-label">Select State Name in English</label>
+                <select id="selStates" asp-for="StateEnglishID" class="form-control" asp-items="@(new SelectList(@ViewBag.StateList, "StateId", "Name", Model.StateEnglishID))"><option value="">Select State </option></select>
+
+            </div>
+            <div  id="divCenglish"class="form-group">
+                <label asp-for="CountryEnglishID" class="control-label">Select Country Name in English</label>
+                <select id="selConuntries" asp-for="CountryEnglishID" class="form-control" asp-items="@(new SelectList(@ViewBag.CountryList, "CountryId", "Name", Model.CountryEnglishID))"><option value="">Select Country </option></select>
+
+            </div>
+            }
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<script>
+    $(document).ready(function () {
+        var hid = $(#hidStateID).text()
+        if (hid > 0) {
+            alert('inside alert');
+            $(#divLang).hide();
+            $(#divSenglish).hide();
+            $(#divCenglish).hide();
+        }
+    })
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,39 @@
+﻿
+@model IEnumerable<PoliticalPartyListViewModel>
+<div class="container">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td> Party Name</td>
+                    <td>Which Language?</td>
+                    <td>English Name</td>
+                    <td>State Name</td>
+                    <td>Country Name</td>
+                    <td>Party Symbol</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                
+                <tr>
+                    <td>@item.PoliticalPartyName</td>
+                    <td>@item.LanguageName</td>
+                    <td>@item.EnglishPartyName</td>
+                    <td>@item.StateName</td>
+                    <td>@item.CountryName</td>
+                    <td><img src=@item.PartyPhotoPath alt="@item.PoliticalPartyName" border="0" /></td>
+                    <td><a asp-action="Edit" asp-route-plangid="@item.PoliticalPartyLanguageID"><span class="fa fa-pencil-alt"></span></a></td>
+                    <td><a asp-action="Delete" asp-route-plangid="@item.PoliticalPartyLanguageID" onclick="return confirm('Are you sure you want to delete the party?');"><span class="fa fa-trash"></span></a></td>
+
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+

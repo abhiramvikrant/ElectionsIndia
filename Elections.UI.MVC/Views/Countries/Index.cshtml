@@ -1,0 +1,50 @@
+﻿ @using ElectionsIndia.Models.ViewModels
+@model IEnumerable<CountryListViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CountryName)
+            </th>
+           
+            
+            <th>
+                @Html.DisplayNameFor(model => model.LanguageName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CountryLanguageName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryName)
+            </td>        
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.LanguageName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryLanguageName)
+            </td>
+            <td>
+                <a class="btn btn-outline-info" asp-controller="Countries" asp-action="Edit"asp-route-languagename="@item.LanguageName" asp-route-countryid="@item.CountryID" asp-route-countryname="@item.CountryName" asp-route-countrylanguagename ="@item.CountryLanguageName" asp-route-clang="@item.CountryLanguageID" asp-route-languageid="@item.LanguageID">Edit</a>
+                <a class="btn btn-danger" asp-controller="Countries" asp-action="Delete" asp-route-languagename="@item.LanguageName" asp-route-countryid="@item.CountryID" asp-route-clang="@item.CountryLanguageID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,58 @@
+﻿@using ElectionsIndia.Models.ViewModels
+@model StatesCreateViewModels
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>StatesCreateViewModels</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+             <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+
+                <label asp-for="LanguageID" class="control-label">Select Language </label>
+                <select asp-for="LanguageID" class="form-control" asp-items="@(new SelectList(@ViewBag.LanguageList,"LanguageId","Name"))"><option value="">Select Language</option></select>
+                <span asp-validation-for="LanguageID" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+
+
+                <label asp-for="StateId" class="control-label">Select State Name in English</label>
+                <select asp-for="StateId" class="form-control" asp-items="@(new SelectList(@ViewBag.StateList,"StateId","Name"))"><option value="">Select State </option></select>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="CountryId" class="control-label">Select Country Name in English</label>
+                <select asp-for="CountryId" class="form-control" asp-items="@(new SelectList(@ViewBag.CountryList,"CountryId","Name"))"><option value="">Select Country </option></select>
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

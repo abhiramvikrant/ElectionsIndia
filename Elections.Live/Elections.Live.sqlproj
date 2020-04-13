@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Elections.Live</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{bf52c667-4201-4e7f-b1ff-78b2f3042472}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Elections.Live</RootNamespace>
+    <AssemblyName>Elections.Live</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="dbo\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\AspNetUserLogins.sql" />
+    <Build Include="dbo\Tables\AspNetUserRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUserTokens.sql" />
+    <Build Include="dbo\Tables\ElectionType.sql" />
+    <Build Include="dbo\Tables\ElectionArea.sql" />
+    <Build Include="dbo\Tables\AreaTypes.sql" />
+    <Build Include="dbo\Tables\ElectionWard.sql" />
+    <Build Include="dbo\Tables\Countries.sql" />
+    <Build Include="dbo\Tables\ElectionBooth.sql" />
+    <Build Include="dbo\Tables\States.sql" />
+    <Build Include="dbo\Tables\Languages.sql" />
+    <Build Include="dbo\Tables\CountryLanguages.sql" />
+    <Build Include="dbo\Tables\StateLanguages.sql" />
+    <Build Include="dbo\Tables\Areas.sql" />
+    <Build Include="dbo\Tables\AreaLanguages.sql" />
+    <Build Include="dbo\Tables\AreaTypeLanguages.sql" />
+    <Build Include="dbo\Tables\VoteConfiguration.sql" />
+    <Build Include="dbo\Tables\License.sql" />
+    <Build Include="dbo\Tables\CandidateLicenses.sql" />
+    <Build Include="dbo\Tables\PoliticalParties.sql" />
+    <Build Include="dbo\Tables\Candidates.sql" />
+    <Build Include="dbo\Tables\ElectionSetup.sql" />
+    <Build Include="dbo\Tables\Voters.sql" />
+    <Build Include="dbo\Tables\Districts.sql" />
+    <Build Include="dbo\Tables\ElectionKiosk.sql" />
+    <Build Include="dbo\Tables\PoliticalPartyTranslation.sql" />
+    <Build Include="dbo\Tables\CandidateLanguages.sql" />
+    <Build Include="dbo\Tables\ElectionParties.sql" />
+    <Build Include="dbo\Tables\ElectionResult.sql" />
+    <Build Include="dbo\Tables\EletionTypeLanguages.sql" />
+    <Build Include="dbo\Tables\Elections.sql" />
+    <Build Include="dbo\Tables\__EFMigrationsHistory.sql" />
+    <Build Include="dbo\Tables\AspNetRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUsers.sql" />
+    <Build Include="dbo\Tables\VoteResult.sql" />
+    <Build Include="dbo\Tables\AspNetRoleClaims.sql" />
+    <Build Include="dbo\Tables\City.sql" />
+    <Build Include="dbo\Tables\PoliticalPartyLanguages.sql" />
+    <Build Include="dbo\Tables\AspNetUserClaims.sql" />
+    <Build Include="dbo\Views\Vw_PoliticalPartiesWithOutNOTA.sql" />
+    <Build Include="dbo\Stored Procedures\PoliticalPartyList.sql" />
+    <Build Include="dbo\Stored Procedures\VoteResultByPlotiticalPartyId.sql" />
+    <Build Include="dbo\Stored Procedures\StateLanguagesByID.sql" />
+    <Build Include="dbo\Stored Procedures\PoliticalPartyInsert.sql" />
+    <Build Include="dbo\Stored Procedures\Insert_Country_Languages.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllCountryByLanguages.sql" />
+    <Build Include="dbo\Stored Procedures\pr__SYS_MakeDeleteRecordProc.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\pr__SYS_MakeInsertRecordProc.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllAreas.sql" />
+    <Build Include="dbo\Stored Procedures\pr__SYS_MakeSelectRecordProc.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\AreaList.sql" />
+    <Build Include="dbo\Stored Procedures\pr__SYS_MakeUpdateRecordProc.sql" />
+    <Build Include="dbo\Stored Procedures\PoliticalPartyByID.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllVotingConfiguration.sql" />
+    <Build Include="dbo\Stored Procedures\InsertArea.sql" />
+    <Build Include="dbo\Stored Procedures\ElectionArea_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\ElectionArea_Update.sql" />
+    <Build Include="dbo\Stored Procedures\ElectionArea_Select.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\ElectionAreaList.sql" />
+    <Build Include="dbo\Stored Procedures\ElectionWard_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\ElectionWard_Select.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\ElectionWard_Update.sql" />
+    <Build Include="dbo\Stored Procedures\ElectionWardList.sql" />
+    <Build Include="dbo\Stored Procedures\ElectionBooth_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\ElectionBooth_Select.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\GetAllStatesWithLanguages.sql" />
+    <Build Include="dbo\Stored Procedures\ElectionBooth_Update.sql" />
+    <Build Include="dbo\Stored Procedures\ElectionBoothList.sql" />
+    <Build Include="dbo\Stored Procedures\City_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\City_Select.sql">
+      <QuotedIdentifier>Off</QuotedIdentifier>
+    </Build>
+    <Build Include="dbo\Stored Procedures\City_Update.sql" />
+    <Build Include="dbo\Stored Procedures\CityList.sql" />
+    <Build Include="dbo\Stored Procedures\GetAllCountries.sql" />
+    <Build Include="dbo\Stored Procedures\PoliticalPartyTranslationList.sql" />
+    <Build Include="dbo\Stored Procedures\DistrictList.sql" />
+    <Build Include="dbo\Stored Procedures\ElectionKioskList.sql" />
+    <Build Include="dbo\Stored Procedures\InsertStates.sql" />
+    <Build Include="dbo\Stored Procedures\InsertDistrict.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateStates.sql" />
+    <Build Include="dbo\Stored Procedures\GetCandidateByBoothId.sql" />
+  </ItemGroup>
+</Project>

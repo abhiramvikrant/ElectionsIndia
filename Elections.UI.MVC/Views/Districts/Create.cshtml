@@ -1,0 +1,87 @@
+﻿@using ElectionsIndia.Models.ViewModels
+@model DistrictListViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>DistrictListViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <input asp-for="DistrictID" type="hidden" />
+
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Select Country</label>
+                <select asp-for="CountryID" class="form-control" asp-items="@(new SelectList(ViewBag.CountryList,"CountryId","Name"))"><option value="">Select Country</option></select>
+                <span asp-validation-for="CountryID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Select State</label>
+                <select asp-for="StateID" class="form-control" asp-items="@(new SelectList(ViewBag.StateList,"StateId","Name"))"><option value="">Select State</option></select>
+                <span asp-validation-for="StateID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="StateLanguageName" class="control-label"></label>
+                <input asp-for="StateLanguageName" class="form-control" />
+                <span asp-validation-for="StateLanguageName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateLanguageName_1" class="control-label"></label>
+                <input asp-for="StateLanguageName_1" class="form-control" />
+                <span asp-validation-for="StateLanguageName_1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateLanguageName_2" class="control-label"></label>
+                <input asp-for="StateLanguageName_2" class="form-control" />
+                <span asp-validation-for="StateLanguageName_2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateLanguageName_3" class="control-label"></label>
+                <input asp-for="StateLanguageName_3" class="form-control" />
+                <span asp-validation-for="StateLanguageName_3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateLanguagename_4" class="control-label"></label>
+                <input asp-for="StateLanguagename_4" class="form-control" />
+                <span asp-validation-for="StateLanguagename_4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateLanguageName_5" class="control-label"></label>
+                <input asp-for="StateLanguageName_5" class="form-control" />
+                <span asp-validation-for="StateLanguageName_5" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

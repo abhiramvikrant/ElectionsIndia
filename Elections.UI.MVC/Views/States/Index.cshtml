@@ -1,0 +1,43 @@
+﻿@using ElectionsIndia.Models.ViewModels
+@model IEnumerable<StateListViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+    <div class="container">
+        @foreach (var item in Model)
+        {
+
+        <div class="row">
+            <div class="col-md-2"><label class="form-control-plaintext">@item.StateName</label></div>
+            <div class="col-md-2"><label class="form-control-plaintext">@item.CountryName</label></div>
+            <div class="col-md-2"><label class="form-control-plaintext">@item.LanguageName</label></div>
+            
+            <div class="co-md-2">
+                <div class="row">
+                <div class="col">
+                <a class="btn btn-outline-info mb-4" asp-controller="States" asp-action="Edit" asp-route-stateid="@item.StateID" asp-route-slangid="@item.StateLanguagesID">Edit</a></div>
+                <div>
+                <div class="col btn btn-outline-success mb-4" style="color:white">
+                    @Html.ActionLink("Delete", "Delete", new { stateid = item.StateID, slang = item.StateLanguagesID },
+
+                new { onclick = "return confirm('Are you sure you want to delete?')" })
+                </div>
+                    
+                    </div>
+            </div>
+        </div>
+            <br />
+       
+    </div>
+        }
+        </div>
+

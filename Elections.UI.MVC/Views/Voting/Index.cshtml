@@ -1,0 +1,59 @@
+﻿@using EletionsIndia.Models.ViewModels
+@model IList<VoteConfigurationViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form method="post">
+    <table class="table">
+
+        @for (int i = 0; i < Model.Count; i++)
+        {
+        var item = Model[0];
+        <tr class="mb-4 pb-4">
+            <td>
+                <label asp-for="@Model[i].CandidateName">@Model[i].CandidateName)</label>
+
+                <input type="hidden" asp-for=@Model[i].CandidateId) />
+                <input type="hidden" asp-for=@Model[i].CountryId) />
+                <input type="hidden" asp-for=@Model[i].StateId) />
+
+                <input type="hidden" asp-for=@Model[i].DistrictId) />
+
+                <input type="hidden" asp-for=@Model[i].AreaiD) />
+                <input type="hidden" asp-for=@Model[i].WardId) />
+                <input type="hidden" asp-for=@Model[i].BoothId) />
+                <input type="hidden" asp-for=@Model[i].KioskId) />
+                <input type="hidden" asp-for=@Model[i].ElectionTypeId) />
+                <input type="hidden" asp-for=@Model[i].VoteConfigurationUID) />
+                <input type="hidden" asp-for=@Model[i].PoliticalPartyId) />
+            </td>
+            <td>
+                <label asp-for="@Model[i].PoliticalPartyName">@Model[i].PoliticalPartyName </label>
+            </td>
+            <td>
+                <label asp-for="@Model[i].PoliticalPartyName"> @Model[i].PoliticalPartyShortName </label>
+            </td>
+            @if (Model[i].PoliticalPartyShortName.ToLower() != "nota")
+            {
+                <td>
+                    <button class="btn btn-primary" asp-action="castevote" asp-route-uid="@Model[i].VoteConfigurationUID" type="submit">Vote!</button>
+                </td>
+
+            }
+            else if (Model[i].PoliticalPartyShortName.ToLower() == "nota")
+            {<td>
+                <button class="btn btn-danger" asp-action="castevote" asp-route-uid="@Model[i].VoteConfigurationUID" type="submit">Vote!</button>
+            </td>
+            }
+        </tr>
+        }
+
+    </table>
+</form>

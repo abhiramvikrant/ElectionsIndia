@@ -1,0 +1,108 @@
+﻿@model VoteConfigurationCreateViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<h4>Create New Voting Configuration</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <input type="hidden" asp-for="VoteConfigurationId" value="" />
+            
+            <span asp-validation-for="CountryId" class="text-danger"></span>
+            <div class="form-group">
+                <label asp-for="CountryId" class="control-label"></label>
+                <select asp-for="CountryId" class="form-control" id="ddlCountry"
+                        asp-items="@(new SelectList(Model.CountryList,"CountryId","Name"))">
+                    <option value="">Select</option>
+                </select>
+                <span asp-validation-for="CountryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CandidateId" class="control-label">Candidates</label>
+                <select asp-for="CandidateId" class="form-control" id="ddlCanidates" 
+                        asp-items="@(new SelectList(Model.CandidateList,"CandidateId","Name"))">
+                    <option value="">Select</option>
+                </select>
+                <span asp-validation-for="CandidateId" class="text-danger"></span>
+            </div> 
+
+            <div class="form-group">
+                <label asp-for="StateID" class="control-label">States</label>
+                <select asp-for="StateID" class="form-control" id="ddlStates" 
+                        asp-items="@(new SelectList(Model.StatesList,"StateId","Name"))">
+                    <option value="">Select</option>
+                </select>
+                <span asp-validation-for="StateID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DistrictId" class="control-label">Districts</label>
+                <select asp-for="DistrictId" class="form-control" id="ddlDistricts" 
+                        asp-items="@(new SelectList(Model.DistrictList,"DistrictId","Name"))">
+                    <option value="">Select</option>
+                </select>
+                <span asp-validation-for="DistrictId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AreaId" class="control-label">Areas</label>
+                <select asp-for="AreaId" class="form-control" id="ddlAreas" 
+                        asp-items="@(new SelectList(Model.AreaList,"AreaId","Name"))">
+                    <option value="">Select</option>
+                </select>
+                <span asp-validation-for="AreaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WardId" class="control-label">Wards</label>
+                <select asp-for="WardId" class="form-control" id="ddlWards"
+                        asp-items="@(new SelectList(Model.WardList,"ElectionWardId","Name"))">
+                    <option value="">Select</option>
+                </select>
+                <span asp-validation-for="WardId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BoothId" class="control-label">Booths</label>
+                <select asp-for="BoothId" class="form-control" id="ddlBooths" 
+                        asp-items="@(new SelectList(Model.BoothList,"ElectionBoothId","Name"))">
+                    <option value="">Select</option>
+                </select>
+                <span asp-validation-for="BoothId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KioskId" class="control-label">Kiosks in Booths</label>
+                <select asp-for="KioskId" class="form-control" id="ddlKiosks" 
+                        asp-items="@(new SelectList(Model.KioskList, "ElectionKioskId","Name"))">
+                    <option value="">Select</option>
+                </select>
+                <span asp-validation-for="KioskId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ElectionTypeId" class="control-label"></label>
+                <select asp-for="ElectionTypeId" class="form-control" id="ddlElectionType" 
+                        asp-items="@(new SelectList(Model.ElectionTypeList, "ElectionTypeId","Name"))">
+                    <option value="">Select</option>
+                </select>
+                <span asp-validation-for="ElectionTypeId" class="text-danger"></span>
+            </div>
+        <div class="form-group">
+                <label asp-for="PoliticalPartyId" class="control-label">Political Parties</label>
+                <select asp-for="PoliticalPartyId" class="form-control" id="ddlPoliticalParties" 
+                        asp-items="@(new SelectList(Model.PoliticalPartyList, "PoliticalPartyId","Name"))">
+                    <option value="">Select</option>
+                </select>
+                <span asp-validation-for="PoliticalPartyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit"  class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

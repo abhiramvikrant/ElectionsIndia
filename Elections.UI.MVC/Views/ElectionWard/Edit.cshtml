@@ -1,0 +1,79 @@
+﻿@model ElectionWard
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>ElectionWard</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <input asp-for="ElectionWardId" class="form-control" type="hidden" />
+
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ElectionAreaId" class="control-label">Select City</label>
+                <select asp-for="ElectionAreaId" class="form-control" asp-items="@(new SelectList(ViewBag.AreaList,"ElectionAreaId","Name",Model.ElectionAreaId))"><option value="">Select Area</option></select>
+                <span asp-validation-for="ElectionAreaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateLanguageName" class="control-label"></label>
+                <input asp-for="StateLanguageName" class="form-control" />
+                <span asp-validation-for="StateLanguageName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateLanguageName1" class="control-label"></label>
+                <input asp-for="StateLanguageName1" class="form-control" />
+                <span asp-validation-for="StateLanguageName1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateLanguageName2" class="control-label"></label>
+                <input asp-for="StateLanguageName2" class="form-control" />
+                <span asp-validation-for="StateLanguageName2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateLanguageName3" class="control-label"></label>
+                <input asp-for="StateLanguageName3" class="form-control" />
+                <span asp-validation-for="StateLanguageName3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateLanguagename4" class="control-label"></label>
+                <input asp-for="StateLanguagename4" class="form-control" />
+                <span asp-validation-for="StateLanguagename4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateLanguageName5" class="control-label"></label>
+                <input asp-for="StateLanguageName5" class="form-control" />
+                <span asp-validation-for="StateLanguageName5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
