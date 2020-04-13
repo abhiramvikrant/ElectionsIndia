@@ -81,6 +81,8 @@ namespace ElectionsIndia.DataAccess
 
         public virtual DbSet<VoteResult> VoteResult { get; set; }
         public virtual DbSet<VW_PoliticalPartiesWithOutNOTA> VW_PoliticalPartiesWithOutNOTA { get; set; }
+
+        public virtual DbSet<VotingResultViewModel> VotingResultViewModel { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 

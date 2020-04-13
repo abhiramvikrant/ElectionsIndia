@@ -117,5 +117,12 @@ namespace Elections.UI.MVC.Controllers
             model.ElectionTypeList = typerepo.GetAll().Where(s => s.IsActive == true).ToList();
         }
 
+        [HttpGet]
+        public IActionResult VotingResult()
+        {
+            var result = db.VotingResultViewModel.FromSqlInterpolated($"EXEC VoteResultByPlotiticalPartyId").ToList();
+            return View(result);
+        }
+
     }
 }

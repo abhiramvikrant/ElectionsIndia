@@ -18,78 +18,70 @@
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"></script>
     <style type="text/css">
-
-        /* Navbar container */
         .navbar {
-            overflow: hidden;
+          
             background-color: #333;
-            font-family: Arial;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 40px;
         }
 
-            /* Links inside the navbar */
             .navbar a {
                 float: left;
                 font-size: 16px;
                 color: white;
-                text-align: center;
-                padding: 14px 16px;
+              
+              
                 text-decoration: none;
             }
-
-        /* The dropdown container */
-        .dropdown {
-            float: left;
-            overflow: hidden;
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
         }
 
-            /* Dropdown button */
-            .dropdown .dropbtn {
-                font-size: 16px;
-                border: none;
-                outline: none;
-                color: white;
-                padding: 14px 16px;
-                background-color: inherit;
-                font-family: inherit; /* Important for vertical align on mobile phones */
-                margin: 0; /* Important for vertical align on mobile phones */
-            }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
-            /* Add a red background color to navbar links on hover */
-            .navbar a:hover, .dropdown:hover .dropbtn {
-                background-color: red;
-            }
-
-        /* Dropdown content (hidden by default) */
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #f9f9f9;
+            background-color: #f1f1f1;
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
 
-            /* Links inside the dropdown */
             .dropdown-content a {
-                float: none;
                 color: black;
                 padding: 12px 16px;
                 text-decoration: none;
                 display: block;
-                text-align: left;
-            }
-            .dropdown:hover{
-                display: block;
             }
 
-                /* Add a grey background color to dropdown links on hover */
                 .dropdown-content a:hover {
                     background-color: #ddd;
                 }
 
-        /* Show the dropdown menu on hover */
         .dropdown:hover .dropdown-content {
             display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+
+        .goright{
+            position: absolute;
+            right: 10px
+        }
+
+        .alignmenu{
+            position: absolute;
+            right: 150px;
         }
     </style>
 </head>
@@ -115,69 +107,76 @@
 
 
                     <div class="dropdown-content ">
-                        
-                                   
-                                    <a asp-area="" asp-controller="Languages" asp-action="Index">Home</a>
 
 
-                                    <a asp-area="" asp-controller="PoliticalParty" asp-action="Create">Add Political Party</a>
-                                    <a asp-area="" asp-controller="voting" asp-action="index">Caste your Vote</a>
-                                    <a asp-area="" asp-controller="PoliticalParty" asp-action="Index">Political Parties</a>
-                             
-                                    
-                                    <a asp-area="" asp-controller="Languages" asp-action="Create">Add Languages</a>
+                        <a asp-area="" asp-controller="Languages" asp-action="Index">Home</a>
 
 
+                        <a asp-area="" asp-controller="PoliticalParty" asp-action="Create">Add Political Party</a>
+                        <a asp-area="" asp-controller="voting" asp-action="index">Caste your Vote</a>
+                        <a asp-area="" asp-controller="PoliticalParty" asp-action="Index">Political Parties</a>
 
-                                    <a asp-area="" asp-controller="Countries" asp-action="Index">Countries</a>
 
-                                    <a asp-area="" asp-controller="Countries" asp-action="Create">Add New Country</a>
-
-
-                                    <a asp-area="" asp-controller="States" asp-action="Index">States</a>
+                        <a asp-area="" asp-controller="Languages" asp-action="Create">Add Languages</a>
 
 
 
-                                    <a asp-area="" asp-controller="States" asp-action="Create">Add New State</a>
-                              
-                                    <a asp-area="" asp-controller="Areas" asp-action="Index">Areas</a>
+                        <a asp-area="" asp-controller="Countries" asp-action="Index">Countries</a>
+
+                        <a asp-area="" asp-controller="Countries" asp-action="Create">Add New Country</a>
 
 
-                                    <a asp-area="" asp-controller="Areas" asp-action="Create">Add Areas</a>
-
-
-                                    <a asp-area="" asp-controller="Districts" asp-action="Index">Districts</a>
-
-
-                                    <a asp-area="" asp-controller="Districts" asp-action="Create">Add Districts</a>
-
-
-                                    <a asp-area="" asp-controller="City" asp-action="Index">Cities</a>
-
-
-                                    <a asp-area="" asp-controller="City" asp-action="Create">Add Cities</a>
-                              
-                                    <a asp-area="" asp-controller="ElectionWard" asp-action="Index">Wards</a>
-
-
-                                    <a asp-area="" asp-controller="ElectionWard" asp-action="Create">Add Ward</a>
-
-
-                                    <a asp-area="" asp-controller="ElectionBooth" asp-action="Index">Booths</a>
+                        <a asp-area="" asp-controller="States" asp-action="Index">States</a>
 
 
 
+                        <a asp-area="" asp-controller="States" asp-action="Create">Add New State</a>
 
-                                    <a asp-area="" asp-controller="ElectionKiosk" asp-action="Index">Kiosks</a>
+                        <a asp-area="" asp-controller="Areas" asp-action="Index">Areas</a>
 
-                                    <a asp-area="" asp-controller="ElectionKiosk" asp-action="Create">Add Kiosk</a>
+
+                        <a asp-area="" asp-controller="Areas" asp-action="Create">Add Areas</a>
+
+                        <a asp-area="" asp-controller="Districts" asp-action="Index">Districts</a>
+
+
+                        <a asp-area="" asp-controller="Districts" asp-action="Create">Add Districts</a>
+
+
+                        <a asp-area="" asp-controller="City" asp-action="Index">Cities</a>
+
+
+                        <a asp-area="" asp-controller="City" asp-action="Create">Add Cities</a>
+
+                        <a asp-area="" asp-controller="ElectionWard" asp-action="Index">Wards</a>
+
+
+                        <a asp-area="" asp-controller="ElectionWard" asp-action="Create">Add Ward</a>
+
+
+                        <a asp-area="" asp-controller="ElectionBooth" asp-action="Index">Booths</a>
 
 
 
 
-                                    <a asp-area="" asp-controller="voting" asp-action="create">Create Voting Configuration</a>
-                                </div>
-                            </div>
+                        <a asp-area="" asp-controller="ElectionKiosk" asp-action="Index">Kiosks</a>
+
+                        <a asp-area="" asp-controller="ElectionKiosk" asp-action="Create">Add Kiosk</a>
+
+
+
+
+                        <a asp-area="" asp-controller="voting" asp-action="create">Create Voting Configuration</a>
+
+                        <a asp-area="" asp-controller="voting" asp-action="index">Caste your vote</a>
+
+                        <a asp-area="" asp-controller="voting" asp-action="votingresult">Vote Result</a>
+                    </div>
+
+                   
+                </div>
+                     
+                            
              
              
             }
