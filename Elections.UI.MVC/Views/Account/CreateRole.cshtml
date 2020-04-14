@@ -1,16 +1,17 @@
 ﻿@model EletionsIndia.Models.ViewModels.RoleCreateViewModels
 
 @{
-    ViewData["Title"] = "CreateRole";
+    ViewData["Title"] = "Create Role";
 }
 
-<h4>CreateRole</h4>
+<h4>Create Role</h4>
 
 
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CreateRole">
+
+    <div class="row">
+        <div class="col-md-4">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="RoleName" class="control-label"></label>
@@ -18,20 +19,37 @@
                 <span asp-validation-for="RoleName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create Roles" asp-action="createrole" class="btn btn-primary" />
+                <input type="submit" value="Create Roles" asp-action="createroles" class="btn btn-primary" />
             </div>
-        </form>
+
+        </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col">&nbsp;</div>
+    </div>
+    <h4>Roles List</h4>
+    <hr />
+    <div class="row mt-4">
+        @foreach (var item in Model.RoleList)
+        {
+            <div class="col-md-4 mr-5 mt-4">
+                <label>@item.Name</label>
+               
+            </div>
+            <div class="col-md-3 mr-5 mt-4">
+                <form method="get">
+                <a asp-route-RoleId="@item.Id" asp-action="adduserstoroles" class="btn btn-outline-info" >Add User to Roles</a>
+                    </form>
+            </div>
+            <div class="col-md-3 mr-5 mt-4">
+                <button asp-route-RoleId="@item.Id" asp-action="deleterole" onclick="return confirm('Are you sure about deleting the role? Click OK to continue.');" class="btn btn-outline-danger">Delete</button>
+            </div>
+
+        }
+        <!-- end of row-->
+    </div>
 
 <div>
-    <table class="table table-striped">
-        <tbody>
-            @foreach (var item in Model.RoleList)
-            {
-                <tr><td>@item.Name</td><td><button type="button" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete?');" asp-action="roledelete" asp-route-rolename="@item.Name">Delete</button></td></tr>
-            }
-        </tbody>
-    </table>
+   
 </div>
 
