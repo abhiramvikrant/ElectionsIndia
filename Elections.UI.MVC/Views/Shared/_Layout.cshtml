@@ -41,30 +41,9 @@
             border: none;
         }
 
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
+     
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f1f1f1;
-            min-width: 250px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-            .dropdown-content a {
-                color: black;
-                padding: 6px 6px;
-                text-decoration: none;
-                display: block;
-            }
-
-                .dropdown-content a:hover {
-                    background-color: #ddd;
-                }
+        
 
         /*.dropdown:hover .dropdown-content {
             display: block;
@@ -89,108 +68,109 @@
         }
         .dropdown-menu{
             background-color: gray;
+            z-index: 10;
         }
     </style>
 </head>
 <body>
-     
-        <div class="navbar">
-            <a href="#">Election Portal on Cloud</a>
-            @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+
+    <div class="navbar">
+        <a href="#">Election Portal on Cloud</a>
+        @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>*@
 
 
-            @if (User.Identity.IsAuthenticated)
+        @if (User.Identity.IsAuthenticated)
             {
-                <a asp-controller="account" asp-action="logout" class="goright">Log Out</a>
-                <div class="dropdown alignstaffmenu">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Staff  Menu
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" asp-controller="voting" asp-action="create">Create Voting Configuration</a>
+        <a asp-controller="account" asp-action="logout" class="goright">Log Out</a>
+        <div class="nav-item alignstaffmenu">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Staff  Menu
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" asp-controller="voting" asp-action="create">Create Voting Configuration</a>
 
-                        <a class="dropdown-item" asp-controller="voting" asp-action="index">Caste your vote</a>
+                <a class="dropdown-item" asp-controller="voting" asp-action="index">Caste your vote</a>
 
-                        <a class="dropdown-item" asp-controller="voting" asp-action="votingresult">Vote Result</a>
+                <a class="dropdown-item" asp-controller="voting" asp-action="votingresult">Vote Result</a>
 
-                        <a class="dropdown-item" asp-controller="account" asp-action="createrole">Create Roles</a>
-                        <!-- end of dopdown-content of staff menu-->
-                    </div>
-                    <!-- end of staff menu dropdown div-->
-                </div>
-                <div class="dropdown alignmenu show">
+                <a class="dropdown-item" asp-controller="account" asp-action="createrole">Create Roles</a>
+                <!-- end of dopdown-content of staff menu-->
+            </div>
+            <!-- end of staff menu dropdown div-->
+        </div>
+        <div class="nav-item  alignmenu">
 
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Geographical  Menu
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">                   
-
-
-                            <a class="dropdown-item" asp-controller="Languages" asp-action="Index">Home</a>
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Geographical  Menu
+            </a>
+            <div class="dropdown-menu">
 
 
-                            <a class="dropdown-item" asp-controller="PoliticalParty" asp-action="Create">Add Political Party</a>
-                            <a class="dropdown-item" asp-controller="voting" asp-action="index">Caste your Vote</a>
-                            <a class="dropdown-item" asp-controller="PoliticalParty" asp-action="Index">Political Parties</a>
+                <a class="dropdown-item" asp-controller="Languages" asp-action="Index">Home</a>
 
 
-                            <a class="dropdown-item" asp-controller="Languages" asp-action="Create">Add New Language</a>
+                <a class="dropdown-item" asp-controller="PoliticalParty" asp-action="Create">Add Political Party</a>
+               
+                <a class="dropdown-item" asp-controller="PoliticalParty" asp-action="Index">Political Parties</a>
 
 
-
-                            <a class="dropdown-item" asp-controller="Countries" asp-action="Index">Countries</a>
-
-                            <a class="dropdown-item" asp-controller="Countries" asp-action="Create">Add New Country</a>
-
-
-                            <a class="dropdown-item" asp-controller="States" asp-action="Index">States</a><br />
+                <a class="dropdown-item" asp-controller="Languages" asp-action="Create">Add New Language</a>
 
 
 
-                            <a class="dropdown-item" asp-controller="States" asp-action="Create">Add New State</a>
+                <a class="dropdown-item" asp-controller="Countries" asp-action="Index">Countries</a>
 
-                            <a class="dropdown-item" asp-controller="Areas" asp-action="Index">Areas</a>
-
-
-                            <a class="dropdown-item" asp-controller="Areas" asp-action="Create">Add New Area</a>
-
-                            <a class="dropdown-item" asp-controller="Districts" asp-action="Index">Districts</a>
+                <a class="dropdown-item" asp-controller="Countries" asp-action="Create">Add New Country</a>
 
 
-                            <a class="dropdown-item" asp-controller="Districts" asp-action="Create">Add New District</a>
-
-
-                            <a class="dropdown-item" asp-controller="City" asp-action="Index">Cities</a>
-
-
-                            <a class="dropdown-item" asp-controller="City" asp-action="Create">Add New City</a>
-
-                            <a class="dropdown-item" asp-controller="ElectionWard" asp-action="Index">Wards</a>
-
-
-                            <a class="dropdown-item" asp-controller="ElectionWard" asp-action="Create">Add New Ward</a>
-
-
-                            <a class="dropdown-item" asp-controller="ElectionBooth" asp-action="Index">Booths</a>
+                <a class="dropdown-item" asp-controller="States" asp-action="Index">States</a><br />
 
 
 
+                <a class="dropdown-item" asp-controller="States" asp-action="Create">Add New State</a>
 
-                            <a class="dropdown-item" asp-controller="ElectionKiosk" asp-action="Index">Kiosks</a>
+                <a class="dropdown-item" asp-controller="Areas" asp-action="Index">Areas</a>
 
-                            <a class="dropdown-item" asp-controller="ElectionKiosk" asp-action="Create">Add New Kiosk</a>
+
+                <a class="dropdown-item" asp-controller="Areas" asp-action="Create">Add New Area</a>
+
+                <a class="dropdown-item" asp-controller="Districts" asp-action="Index">Districts</a>
+
+
+                <a class="dropdown-item" asp-controller="Districts" asp-action="Create">Add New District</a>
+
+
+                <a class="dropdown-item" asp-controller="City" asp-action="Index">Cities</a>
+
+
+                <a class="dropdown-item" asp-controller="City" asp-action="Create">Add New City</a>
+
+                <a class="dropdown-item" asp-controller="ElectionWard" asp-action="Index">Wards</a>
+
+
+                <a class="dropdown-item" asp-controller="ElectionWard" asp-action="Create">Add New Ward</a>
+
+
+                <a class="dropdown-item" asp-controller="ElectionBooth" asp-action="Index">Booths</a>
 
 
 
 
+                <a class="dropdown-item" asp-controller="ElectionKiosk" asp-action="Index">Kiosks</a>
 
-                        </div>
+                <a class="dropdown-item" asp-controller="ElectionKiosk" asp-action="Create">Add New Kiosk</a>
 
 
-                    </div>
+
+
+
+            </div>
+
+
+        </div>
 
 
 
@@ -198,15 +178,15 @@
                     }
                     else
                     {
-                    <a asp-controller="account" asp-action="login">Log In</a>
+        <a asp-controller="account" asp-action="login">Log In</a>
                     }
 
 
 
-                </div>
-  
-   
-    <div  class="container">
+    </div>
+
+
+    <div class="container">
         <main role="main" class=" mt-5 pb-3">
             @RenderBody()
         </main>
@@ -214,18 +194,37 @@
 
     <footer class="border-top footer text-muted" style="line-height:30px;">
         <div class="container">
-            &copy; 2020 - Elections- <a class="dropdown-item" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2020 - Elections
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <section>
+        <environment Include="Development">
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="screen" />
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+            <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="screen" />
+            <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+            <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+            <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="screen" />
+            <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+        </environment>
+    </section>
     @RenderSection("Scripts", required: false)
+   
 </body>
 </html>
 
