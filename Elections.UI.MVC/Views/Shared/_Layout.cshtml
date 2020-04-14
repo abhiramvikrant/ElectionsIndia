@@ -66,9 +66,9 @@
                     background-color: #ddd;
                 }
 
-        .dropdown:hover .dropdown-content {
+        /*.dropdown:hover .dropdown-content {
             display: block;
-        }
+        }*/
 
         .dropdown:hover .dropbtn {
             background-color: #3e8e41;
@@ -87,6 +87,9 @@
             position: absolute;
             right: 30%;
         }
+        .dropdown-menu{
+            background-color: gray;
+        }
     </style>
 </head>
 <body>
@@ -103,91 +106,87 @@
             {
                 <a asp-controller="account" asp-action="logout" class="goright">Log Out</a>
                 <div class="dropdown alignstaffmenu">
-                    <button class="btn btn-outline-info">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Staff  Menu
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content ">
-                        <a asp-area="" asp-controller="voting" asp-action="create">Create Voting Configuration</a>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" asp-controller="voting" asp-action="create">Create Voting Configuration</a>
 
-                        <a asp-area="" asp-controller="voting" asp-action="index">Caste your vote</a>
+                        <a class="dropdown-item" asp-controller="voting" asp-action="index">Caste your vote</a>
 
-                        <a asp-area="" asp-controller="voting" asp-action="votingresult">Vote Result</a>
+                        <a class="dropdown-item" asp-controller="voting" asp-action="votingresult">Vote Result</a>
 
-                        <a asp-controller="account" asp-action="createrole">Create Roles</a>
+                        <a class="dropdown-item" asp-controller="account" asp-action="createrole">Create Roles</a>
                         <!-- end of dopdown-content of staff menu-->
                     </div>
-                        <!-- end of staff menu dropdown div-->
-                    </div>
-                    <div class="dropdown alignmenu">
+                    <!-- end of staff menu dropdown div-->
+                </div>
+                <div class="dropdown alignmenu show">
 
-                        <button class="btn btn-outline-info">
-                            Geographical  Menu
-                            <i class="fa fa-caret-down"></i>
-                        </button>
-
-
-                        <div class="dropdown-content ">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Geographical  Menu
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">                   
 
 
-                            <a asp-area="" asp-controller="Languages" asp-action="Index">Home</a>
+                            <a class="dropdown-item" asp-controller="Languages" asp-action="Index">Home</a>
 
 
-                            <a asp-area="" asp-controller="PoliticalParty" asp-action="Create">Add Political Party</a>
-                            <a asp-area="" asp-controller="voting" asp-action="index">Caste your Vote</a>
-                            <a asp-area="" asp-controller="PoliticalParty" asp-action="Index">Political Parties</a>
+                            <a class="dropdown-item" asp-controller="PoliticalParty" asp-action="Create">Add Political Party</a>
+                            <a class="dropdown-item" asp-controller="voting" asp-action="index">Caste your Vote</a>
+                            <a class="dropdown-item" asp-controller="PoliticalParty" asp-action="Index">Political Parties</a>
 
 
-                            <a asp-area="" asp-controller="Languages" asp-action="Create">Add New Language</a>
+                            <a class="dropdown-item" asp-controller="Languages" asp-action="Create">Add New Language</a>
 
 
 
-                            <a asp-area="" asp-controller="Countries" asp-action="Index">Countries</a>
+                            <a class="dropdown-item" asp-controller="Countries" asp-action="Index">Countries</a>
 
-                            <a asp-area="" asp-controller="Countries" asp-action="Create">Add New Country</a>
-
-
-                            <a asp-area="" asp-controller="States" asp-action="Index">States</a><br />
+                            <a class="dropdown-item" asp-controller="Countries" asp-action="Create">Add New Country</a>
 
 
-
-                            <a asp-area="" asp-controller="States" asp-action="Create">Add New State</a>
-
-                            <a asp-area="" asp-controller="Areas" asp-action="Index">Areas</a>
+                            <a class="dropdown-item" asp-controller="States" asp-action="Index">States</a><br />
 
 
-                            <a asp-area="" asp-controller="Areas" asp-action="Create">Add New Area</a>
 
-                            <a asp-area="" asp-controller="Districts" asp-action="Index">Districts</a>
+                            <a class="dropdown-item" asp-controller="States" asp-action="Create">Add New State</a>
 
-
-                            <a asp-area="" asp-controller="Districts" asp-action="Create">Add New District</a>
+                            <a class="dropdown-item" asp-controller="Areas" asp-action="Index">Areas</a>
 
 
-                            <a asp-area="" asp-controller="City" asp-action="Index">Cities</a>
+                            <a class="dropdown-item" asp-controller="Areas" asp-action="Create">Add New Area</a>
+
+                            <a class="dropdown-item" asp-controller="Districts" asp-action="Index">Districts</a>
 
 
-                            <a asp-area="" asp-controller="City" asp-action="Create">Add New City</a>
-
-                            <a asp-area="" asp-controller="ElectionWard" asp-action="Index">Wards</a>
+                            <a class="dropdown-item" asp-controller="Districts" asp-action="Create">Add New District</a>
 
 
-                            <a asp-area="" asp-controller="ElectionWard" asp-action="Create">Add New Ward</a>
+                            <a class="dropdown-item" asp-controller="City" asp-action="Index">Cities</a>
 
 
-                            <a asp-area="" asp-controller="ElectionBooth" asp-action="Index">Booths</a>
+                            <a class="dropdown-item" asp-controller="City" asp-action="Create">Add New City</a>
+
+                            <a class="dropdown-item" asp-controller="ElectionWard" asp-action="Index">Wards</a>
+
+
+                            <a class="dropdown-item" asp-controller="ElectionWard" asp-action="Create">Add New Ward</a>
+
+
+                            <a class="dropdown-item" asp-controller="ElectionBooth" asp-action="Index">Booths</a>
 
 
 
 
-                            <a asp-area="" asp-controller="ElectionKiosk" asp-action="Index">Kiosks</a>
+                            <a class="dropdown-item" asp-controller="ElectionKiosk" asp-action="Index">Kiosks</a>
 
-                            <a asp-area="" asp-controller="ElectionKiosk" asp-action="Create">Add New Kiosk</a>
-
-
+                            <a class="dropdown-item" asp-controller="ElectionKiosk" asp-action="Create">Add New Kiosk</a>
 
 
-                           
+
+
+
                         </div>
 
 
@@ -213,9 +212,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted" style="line-height:30px;">
         <div class="container">
-            &copy; 2020 - Elections- <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2020 - Elections- <a class="dropdown-item" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
