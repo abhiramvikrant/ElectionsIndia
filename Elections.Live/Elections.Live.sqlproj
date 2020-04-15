@@ -157,5 +157,6 @@
     <Build Include="dbo\Stored Procedures\InsertDistrict.sql" />
     <Build Include="dbo\Stored Procedures\UpdateStates.sql" />
     <Build Include="dbo\Stored Procedures\GetCandidateByBoothId.sql" />
+    <Build Include="dbo\Views\Create_VW_CityWithActive.sql" />
   </ItemGroup>
 </Project>
