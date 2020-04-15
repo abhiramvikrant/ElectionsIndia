@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElectionsIndia.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -43,7 +44,7 @@ namespace EletionsIndia.Models.ViewModels
 
         public string City { get; set; }
 
-        public int CountryId { get; set; }
+        public string Country { get; set; }
         [Required(ErrorMessage ="Pin Code or Zip Code is required")]
         [Display(Name= "Pin Code/Zip Code")]
         public int PinCode { get; set; }
@@ -51,5 +52,11 @@ namespace EletionsIndia.Models.ViewModels
         [Required(ErrorMessage ="Say about yourself is required")]
         [Display(Name ="Say About Yourself")]
         public string SayAboutYourself { get; set; }
+
+        public IList<Countries> CountryList { get; set; }
+
+        public IList<VW_CityWithActive> CityList { get; set; }
+
+
     }
 }

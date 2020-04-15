@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using ElectionsIndia.Models.ViewModels;
+using ElectionsIndia.DataAccess.Repository;
+using ElectionsIndia.Models;
 
 namespace Elections.UI.MVC.Controllers
 {
@@ -24,16 +26,22 @@ namespace Elections.UI.MVC.Controllers
         private readonly SignInManager<ApplicationUser> smanager;
         private readonly RoleManager<IdentityRole> rmanager;
         private readonly IMapper mapper;
+        private readonly IRepository<Countries> courepo;
+        private readonly IRepository<VW_CityWithActive> cityRepo;
+
 
 
         // GET: Account
-        public AccountController(UserManager<ApplicationUser> umanager, SignInManager<ApplicationUser> smanager, RoleManager<IdentityRole> rmanager, IMapper mapper)
+        public AccountController(UserManager<ApplicationUser> umanager, SignInManager<ApplicationUser> smanager,
+            RoleManager<IdentityRole> rmanager, IMapper mapper, IRepository<Countries> courepo,
+            IRepository<VW_CityWithActive> cityRepo)
         {
             this.umanager = umanager;
             this.smanager = smanager;
             this.rmanager = rmanager;
             this.mapper = mapper;
-
+            this.courepo = courepo;
+            this.cityRepo = cityRepo;
         }
         [HttpGet]
         [AllowAnonymous]
@@ -105,7 +113,27 @@ namespace Elections.UI.MVC.Controllers
         // GET: Account/Create
         public ActionResult Create()
         {
-            return View();
+            UserCreateViewModel model = new UserCreateViewModel();
+            try
+            {
+                GetCountryAndCityList(ref model);
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View();
+                throw new Exception(ex.Message);
+            }
+
+         
+            
+        }
+
+        private void GetCountryAndCityList(ref UserCreateViewModel model)
+        {
+            model.CountryList = courepo.GetAll().Where(s => s.IsActive == true).ToList();
+            model.CityList = cityRepo.GetAll().ToList();
         }
 
         // POST: Account/Create
@@ -115,12 +143,22 @@ namespace Elections.UI.MVC.Controllers
         {
             try
             {
+                model.Email = model.UserName;
                 var user = mapper.Map<ApplicationUser>(model);
                 var result = await umanager.CreateAsync(user).ConfigureAwait(true);
                 if (result.Succeeded)
                 {
                     var re = await umanager.AddPasswordAsync(user, model.Password).ConfigureAwait(true);
                     return RedirectToAction("index", "languages");
+                }
+                else
+                {
+                    foreach (var item in result.Errors.ToList())
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
+                    GetCountryAndCityList(ref model);
+                    return View(model);
                 }
             }
             catch (Exception ex)
