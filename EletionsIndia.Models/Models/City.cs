@@ -17,9 +17,9 @@ namespace ElectionsIndia.Models
         public string StateLanguageName { get; set; }
         public string StateLanguageName_1 { get; set; }
         public string StateLanguageName_2 { get; set; }
-        public string StateLanguageName3 { get; set; }
-        public string StateLanguagename4 { get; set; }
-        public string StateLanguageName5 { get; set; }
+        public string StateLanguageName_3 { get; set; }
+        public string StateLanguagename_4 { get; set; }
+        public string StateLanguageName_5 { get; set; }
 
         public virtual Districts District { get; set; }
         public virtual ICollection<ElectionArea> ElectionArea { get; set; }

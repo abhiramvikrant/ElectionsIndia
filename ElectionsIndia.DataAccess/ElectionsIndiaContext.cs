@@ -85,6 +85,8 @@ namespace ElectionsIndia.DataAccess
         public virtual DbSet<VotingResultViewModel> VotingResultViewModel { get; set; }
 
         public virtual DbSet<VW_CityWithActive> VW_CityWithActive { get; set; }
+
+        public virtual DbSet<VW_DsitrictsWithActive> VW_DsitrictsWithActive { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 

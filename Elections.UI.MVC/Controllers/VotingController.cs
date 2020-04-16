@@ -22,7 +22,7 @@ namespace Elections.UI.MVC.Controllers
         private readonly IMapper mapper;
         private readonly IRepository<Countries> courepo;
         private readonly IRepository<States> strepo;
-        private readonly IRepository<Districts> disrepo;
+        private readonly IRepository<VW_DsitrictsWithActive> disrepo;
         private readonly IRepository<City> cirepo;
         private readonly IRepository<Areas> arepo;
         private readonly IRepository<ElectionWard> ewardrepo;
@@ -35,7 +35,7 @@ namespace Elections.UI.MVC.Controllers
 
         public VotingController(IRepository<VoteConfigurationViewModel> vcrepo,IRepository<VoteResult> resrepo,
             IRepository<VoteConfiguration> crepo, ElectionsIndiaContext db, IMapper mapper,
-            IRepository<Countries> courepo, IRepository<States> strepo, IRepository<Districts> disrepo,
+            IRepository<Countries> courepo, IRepository<States> strepo, IRepository<VW_DsitrictsWithActive> disrepo,
             IRepository<City> cirepo, IRepository<Areas> arepo,IRepository<ElectionWard> ewardrepo,
             IRepository<ElectionBooth> borepo, IRepository<ElectionKiosk> kioskrepo, IRepository<Candidates> carepo
             ,IRepository<PoliticalParties> parepo, IRepository<ElectionType> typerepo,
@@ -104,17 +104,26 @@ namespace Elections.UI.MVC.Controllers
         }
             private void GetAllLists(ref VoteConfigurationCreateViewModel model)
         {
-            model.CountryList = courepo.GetAll().Where(s => s.IsActive == true).ToList();
-            model.CandidateList = carepo.GetAll().Where(s => s.IsActive == true).ToList();
-            model.StatesList = strepo.GetAll().Where(s => s.IsActive == true).ToList();
-            model.DistrictList = disrepo.GetAll().Where(s => s.IsActive == true).ToList();
-            model.CityList = cirepo.GetAll().Where(s => s.IsActive == true).ToList();
-            model.AreaList = arepo.GetAll().Where(s => s.IsActive == true).ToList();
-            model.WardList = ewardrepo.GetAll().Where(s => s.IsActive == true).ToList();
-            model.BoothList = borepo.GetAll().Where(s => s.IsActive == true).ToList();
-            model.KioskList = kioskrepo.GetAll().Where(s => s.IsActive == true).ToList();
-            model.PoliticalPartyList = db.VW_PoliticalPartiesWithOutNOTA.ToList();
-            model.ElectionTypeList = typerepo.GetAll().Where(s => s.IsActive == true).ToList();
+            try
+            {
+                model.CountryList = courepo.GetAll().Where(s => s.IsActive == true).ToList();
+                model.CandidateList = carepo.GetAll().Where(s => s.IsActive == true).ToList();
+                model.StatesList = strepo.GetAll().Where(s => s.IsActive == true).ToList();
+                model.DistrictList = disrepo.GetAll().ToList();
+                model.CityList = cirepo.GetAll().Where(s => s.IsActive == true).ToList();
+                model.AreaList = arepo.GetAll().Where(s => s.IsActive == true).ToList();
+                model.WardList = ewardrepo.GetAll().Where(s => s.IsActive == true).ToList();
+                model.BoothList = borepo.GetAll().Where(s => s.IsActive == true).ToList();
+                model.KioskList = kioskrepo.GetAll().Where(s => s.IsActive == true).ToList();
+                model.PoliticalPartyList = db.VW_PoliticalPartiesWithOutNOTA.ToList();
+                model.ElectionTypeList = typerepo.GetAll().Where(s => s.IsActive == true).ToList();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                
+                throw new Exception(ex.Message);
+            }
         }
 
         [HttpGet]
