@@ -12,5 +12,7 @@ namespace EletionsIndia.Models.ViewModels
       
 
         public int Votes { get; set; }
+
+        public string CandidateName { get; set; }
     }
 }
