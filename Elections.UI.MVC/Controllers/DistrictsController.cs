@@ -36,6 +36,11 @@ namespace Elections.UI.MVC.Controllers
         [HttpPost]
         public IActionResult Create(DistrictListViewModel d)
         {
+            if (d is null)
+            {
+                throw new ArgumentNullException(nameof(d));
+            }
+
             int i = _db.Database.ExecuteSqlRaw($"EXEC InsertDistrict @Name = '{d.Name}', @IsActive = {d.IsActive}, @StateID = {d.StateID}, @CountryID = {d.CountryID}, " +
                 $"@StateLanguageName = '{d.StateLanguageName}', @StateLanguageName_1 = '{d.StateLanguageName_1}', @StateLanguageName_2 = '{d.StateLanguageName_2}'," +
                 $"@StateLanguageName_3 = '{d.StateLanguageName_3}', @StateLanguageName_4 = '{d.StateLanguagename_4}', @StateLanguageName_5 = '{d.StateLanguageName_5}'");

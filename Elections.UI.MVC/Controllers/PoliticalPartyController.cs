@@ -60,9 +60,12 @@ namespace Elections.UI.MVC.Controllers
         [HttpPost][ValidateAntiForgeryToken]
         public IActionResult Create(PoliticalPartyLanguagesCreateViewModel pvn)
         {
+            if (pvn is null)
+            {
+                throw new ArgumentNullException(nameof(pvn));
+            }
 
-            Thread.Sleep(1000);
-                string uniqueFileName = null;
+            string uniqueFileName = null;
             string originalpath = null;
            if(pvn.EnglishPartyID == -2) {
                 if (pvn.PartyPhoto != null)
@@ -129,6 +132,11 @@ namespace Elections.UI.MVC.Controllers
         [HttpPost] [ValidateAntiForgeryToken]
         public IActionResult Edit(PoliticalPartyLanguagesCreateViewModel pl)
         {
+            if (pl is null)
+            {
+                throw new ArgumentNullException(nameof(pl));
+            }
+
             string uniqueFileName = null;
             string originalpath = null;
             if (pl.EnglishPartyID == -2) { 
@@ -191,7 +199,8 @@ namespace Elections.UI.MVC.Controllers
                 {
 
                     ModelState.AddModelError("", "Unable to delete the Political party");
-                    return View(plangl);
+                throw new Exception(ex.Message);
+                   
                 }
             return View(plangl);
 

@@ -102,6 +102,11 @@ namespace Elections.UI.MVC.Controllers
             }
             return View();
         }
+
+        private JsonResult GetStateList(int CountryId)
+        {
+            return Json(strepo.GetAll().Where(s => s.IsActive == true && s.CountryId == CountryId).ToList());
+        }
             private void GetAllLists(ref VoteConfigurationCreateViewModel model)
         {
             try

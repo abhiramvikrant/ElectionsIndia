@@ -4,7 +4,18 @@
     ViewData["Title"] = "Create";
 }
 
+<script type="text/javascript">
+    $(document).ready(function{
+        var defaultItem = "<option value=''>Select</option>;"
+        $('#StateID').html(defaultItem);
+        $('#districtId').html(defaultItem);
+        $('#AreaId').html(defaultItem);
+        $('#WardId').html(defaultItem);
+        $('#BoothId').html(defaultItem);
+        $('#KioskId').html(defaultItem);
+    })
 
+</script>
 
 <h4>Create New Voting Configuration</h4>
 <hr />

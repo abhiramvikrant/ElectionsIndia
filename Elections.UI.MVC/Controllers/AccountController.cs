@@ -17,6 +17,8 @@ using Microsoft.EntityFrameworkCore;
 using ElectionsIndia.Models.ViewModels;
 using ElectionsIndia.DataAccess.Repository;
 using ElectionsIndia.Models;
+using System.Resources;
+using System.Globalization;
 
 namespace Elections.UI.MVC.Controllers
 {
@@ -28,13 +30,14 @@ namespace Elections.UI.MVC.Controllers
         private readonly IMapper mapper;
         private readonly IRepository<Countries> courepo;
         private readonly IRepository<VW_CityWithActive> cityRepo;
+        private readonly ResourceManager resManager;
 
 
 
         // GET: Account
         public AccountController(UserManager<ApplicationUser> umanager, SignInManager<ApplicationUser> smanager,
             RoleManager<IdentityRole> rmanager, IMapper mapper, IRepository<Countries> courepo,
-            IRepository<VW_CityWithActive> cityRepo)
+            IRepository<VW_CityWithActive> cityRepo, ResourceManager resManager)
         {
             this.umanager = umanager;
             this.smanager = smanager;
@@ -42,6 +45,7 @@ namespace Elections.UI.MVC.Controllers
             this.mapper = mapper;
             this.courepo = courepo;
             this.cityRepo = cityRepo;
+            this.resManager = resManager;
         }
         [HttpGet]
         [AllowAnonymous]
@@ -55,6 +59,11 @@ namespace Elections.UI.MVC.Controllers
 
         public async Task<IActionResult> Login(LoginViewModel model)
         {
+            if (model is null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+
             if (ModelState.IsValid)
             {
                 var user = mapper.Map<ApplicationUser>(model);
@@ -105,7 +114,7 @@ namespace Elections.UI.MVC.Controllers
             return RedirectToAction("index", "home");
         }
         // GET: Account/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details()
         {
             return View();
         }
@@ -132,6 +141,11 @@ namespace Elections.UI.MVC.Controllers
 
         private void GetCountryAndCityList(ref UserCreateViewModel model)
         {
+            if (model is null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+
             model.CountryList = courepo.GetAll().Where(s => s.IsActive == true).ToList();
             model.CityList = cityRepo.GetAll().ToList();
         }
@@ -141,6 +155,11 @@ namespace Elections.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(UserCreateViewModel model)
         {
+            if (model is null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
+
             try
             {
                 model.Email = model.UserName;
@@ -163,41 +182,23 @@ namespace Elections.UI.MVC.Controllers
             }
             catch (Exception ex)
             {
-                return View();
+                throw new Exception(ex.Message);
+              
             }
-            return View();
+
         }
 
-        // GET: Account/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Account/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-
-
-        // POST: Account/Delete/5
+       // POST: Account/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(string username)
         {
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                
+                throw new ArgumentException(resManager.GetString("usernamemissing",CultureInfo.CurrentCulture), nameof(username));
+            }
+
             try
             {
                 // TODO: Add delete logic here
@@ -206,9 +207,10 @@ namespace Elections.UI.MVC.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                throw new Exception(ex.Message);
+                
             }
         }
 
@@ -217,6 +219,11 @@ namespace Elections.UI.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> AddUsersToRoles(string RoleId)
         {
+            if (string.IsNullOrWhiteSpace(RoleId))
+            {
+                throw new ArgumentException(resManager.GetString("roleidmissing",CultureInfo.InvariantCulture), nameof(RoleId));
+            }
+
             var role = rmanager.Roles.Where(r => r.Id == RoleId).FirstOrDefault();
             var userNotInRoles = umanager.Users.ToList();
             List<UsersNotInRolesViewModel> UserNotRoleList = new List<UsersNotInRolesViewModel>();
@@ -237,6 +244,16 @@ namespace Elections.UI.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> AddUsersToRoles(IList<UsersNotInRolesViewModel> models, string RoleId)
         {
+            if (models is null)
+            {
+                throw new ArgumentNullException(nameof(models));
+            }
+
+            if (string.IsNullOrEmpty(RoleId))
+            {
+                throw new ArgumentException(resManager.GetString("roleidmissing", CultureInfo.InvariantCulture), nameof(RoleId));
+            }
+
             var role = rmanager.Roles.Where(r => r.Id == models[0].RoleId).FirstOrDefault();
             foreach (var item in models)
             {
@@ -279,6 +296,12 @@ namespace Elections.UI.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateRole(string rolename)
         {
+            if (string.IsNullOrWhiteSpace(rolename))
+            {
+                throw new ArgumentException(resManager.GetString("rolenamenull", CultureInfo.InvariantCulture), nameof(rolename));
+
+            }
+
             IdentityRole role = new IdentityRole(rolename);
             var result = await rmanager.CreateAsync(role).ConfigureAwait(true);
             return GetRoleList();

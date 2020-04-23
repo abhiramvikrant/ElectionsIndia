@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using ElectionsIndia.DataAccess;
+using Elections.UI.MVC.Properties;
+using System.Resources;
+using System.Globalization;
 
 namespace Elections.UI.MVC.Controllers
 {
@@ -15,12 +18,16 @@ namespace Elections.UI.MVC.Controllers
         private ElectionsIndiaContext _db;
         private IRepository<Languages> _langrepo;
         private IRepository<CountryLanguages> _countrylang;
-        public CountriesController(IRepository<Countries> countryrep, ElectionsIndiaContext db, IRepository<Languages> langrepo, IRepository<CountryLanguages> countrylang)
+        private readonly ResourceManager resManager;
+
+        public CountriesController(IRepository<Countries> countryrep, ElectionsIndiaContext db, IRepository<Languages> langrepo, IRepository<CountryLanguages> countrylang
+            , ResourceManager resManager)
         {
             _countryrepo = countryrep;
             _db = db;
             _langrepo = langrepo;
             _countrylang = countrylang;
+            this.resManager = resManager;
         }
         public IActionResult Index()
         {
@@ -48,8 +55,24 @@ namespace Elections.UI.MVC.Controllers
             return View();
         }
         [HttpGet("{Controller}/Edit")]
-        public IActionResult Edit(string languagename, string countrylanguagename, int countryid, string countryname, int languageid, int clang)
+        public IActionResult Edit(string languagename, string countrylanguagename,  string countryname, int languageid, int clang)
         {
+            if (string.IsNullOrEmpty(languagename))
+            {
+                throw new System.ArgumentException(resManager.GetString("languagenamemissing", CultureInfo.CurrentCulture), nameof(languagename));
+
+            }
+
+            if (string.IsNullOrEmpty(countrylanguagename))
+            {
+                throw new System.ArgumentException(resManager.GetString("countrylanguagenamemissing", CultureInfo.CurrentCulture),nameof(countrylanguagename));
+            }
+
+            if (string.IsNullOrEmpty(countryname))
+            {
+                throw new System.ArgumentException(resManager.GetString("countrynamemissing",CultureInfo.InvariantCulture), nameof(countryname));
+            }
+
             CountryEditViewModel ced = null;
             if (languagename == "English")
             {
@@ -81,6 +104,11 @@ namespace Elections.UI.MVC.Controllers
         [HttpPost]
         public IActionResult Edit(CountryEditViewModel cem)
         {
+            if (cem is null)
+            {
+                throw new System.ArgumentNullException(nameof(cem));
+            }
+
             int i;
             if(ModelState.IsValid)
             {              
@@ -109,6 +137,11 @@ namespace Elections.UI.MVC.Controllers
         [HttpPost]
         public IActionResult Create(CountryCreateViewModel c)
         {
+            if (c is null)
+            {
+                throw new System.ArgumentNullException(nameof(c));
+            }
+
             if (ModelState.IsValid)
             {
              
@@ -142,7 +175,10 @@ namespace Elections.UI.MVC.Controllers
         }
 
     
-        public IActionResult Delete(string languagename, int countryid, int clang)
+        public IActionResult Delete(
+            string languagename,
+            int countryid,
+            int clang)
         {
             if(languagename == "English")
             {
@@ -160,7 +196,7 @@ namespace Elections.UI.MVC.Controllers
 
 
             }
-            return View();
+          
         }
     }
 }

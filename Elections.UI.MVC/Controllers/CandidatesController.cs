@@ -7,6 +7,7 @@ using EletionsIndia.Models.ViewModels;
 using AutoMapper;
 using ElectionsIndia.Models;
 using ElectionsIndia.DataAccess.Repository;
+using System.Globalization;
 
 namespace Elections.UI.MVC.Controllers
 {
@@ -47,7 +48,7 @@ namespace Elections.UI.MVC.Controllers
         [HttpGet]
         public IActionResult Edit(string candidateid)
         {
-            var objCandidate = canrepo.GetByID(int.Parse(candidateid));
+            var objCandidate = canrepo.GetByID(int.Parse((candidateid), CultureInfo.InvariantCulture));
             return View(objCandidate);
         }
 
@@ -64,7 +65,7 @@ namespace Elections.UI.MVC.Controllers
 
         public IActionResult Delete(string candidateid)
         {
-            int canid = int.Parse(candidateid);
+            int canid = int.Parse(candidateid, CultureInfo.InvariantCulture);
             var objCan = canrepo.GetByID(canid);
             int result = canrepo.Delete(objCan);
                 if (result > 0)

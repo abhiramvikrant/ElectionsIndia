@@ -31,10 +31,7 @@ namespace Elections.UI.MVC.Controllers
         }
 
         // GET: ElectionBooth/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+       
 
         // GET: ElectionBooth/Create
         public ActionResult Create()
@@ -61,9 +58,11 @@ namespace Elections.UI.MVC.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                throw new Exception(ex.Message);
+
+              
             }
            
         }
@@ -88,9 +87,11 @@ namespace Elections.UI.MVC.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception ex)
             {
+
                 return View();
+                throw new Exception(ex.Message);
             }
         }
 
@@ -107,9 +108,10 @@ namespace Elections.UI.MVC.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception ex)
             {
                 return View();
+                throw new Exception(ex.Message);
             }
         }
     }

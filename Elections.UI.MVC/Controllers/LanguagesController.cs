@@ -55,6 +55,11 @@ namespace Elections.UI.MVC.Controllers
         [HttpPost]
         public IActionResult Create(Languages lang)
         {
+            if (lang is null)
+            {
+                throw new ArgumentNullException(nameof(lang));
+            }
+
             try
             {
                 var checklang = CheckExists(lang.Name);
@@ -71,7 +76,7 @@ namespace Elections.UI.MVC.Controllers
             }
             catch (Exception ex)
             {
-
+                throw new Exception(ex.Message);
                 return new JsonResult($"Error happened: {ex.InnerException.Message} ");
             }
 

@@ -8,6 +8,7 @@ using ElectionsIndia.Models;
 using ElectionsIndia.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using ElectionsIndia.DataAccess;
+using System.Globalization;
 
 namespace Elections.UI.MVC.Controllers
 {
@@ -60,6 +61,10 @@ namespace Elections.UI.MVC.Controllers
         [HttpPost]
         public IActionResult Create(StatesCreateViewModels cm)
         {
+            if (cm is null)
+            {
+                throw new ArgumentNullException(nameof(cm));
+            }
 
             int i = _db.Database.ExecuteSqlRaw($"EXEC InsertStates @Name='{cm.State}', @IsActive = {cm.IsActive}, @CountryID = {cm.CountryId}, @LanguageID = {cm.LanguageID}, @StateID = {cm.StateId}");
 
@@ -82,7 +87,7 @@ namespace Elections.UI.MVC.Controllers
                 s.StateName = data.Name;
                 s.IsActive = data.IsActive;
                 s.StateEnglishID = data.StateId;
-                s.LanguageID = _langrepo.GetAll().Where( m => m.Name.ToLower() == "english").ToList()[0].LanguageId;
+                s.LanguageID = _langrepo.GetAll().Where( m => m.Name.ToLower(CultureInfo.InvariantCulture) == "english").ToList()[0].LanguageId;
                 s.CountryEnglishID = data.CountryId;s.StateLanguagesID = 0;
                 return View(s);
             }
@@ -99,6 +104,11 @@ namespace Elections.UI.MVC.Controllers
         [HttpPost("{Controller}/Edit/{stateid}/{slangid}")]
         public IActionResult Edit(StatesEditViewModel sem)
         {
+            if (sem is null)
+            {
+                throw new ArgumentNullException(nameof(sem));
+            }
+
             if (sem.StateLanguagesID > 0)
                 return ForStateLanguagesUpdate(sem);
             else if (sem.StateID > 0)            

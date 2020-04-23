@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using ElectionsIndia.DataAccess;
+using System.Resources;
 
 namespace Elections.UI.MVC.Controllers
 {
@@ -17,12 +18,15 @@ namespace Elections.UI.MVC.Controllers
         private readonly IRepository<ElectionKiosk> ekrepo;
         private readonly ElectionsIndiaContext db;
         private readonly IRepository<ElectionBooth> boothrepo;
+        private readonly ResourceManager resManager;
 
-        public ElectionKioskController(IRepository<ElectionKiosk> ekrepo, ElectionsIndiaContext db,IRepository<ElectionBooth> boothrepo)
+        public ElectionKioskController(IRepository<ElectionKiosk> ekrepo, ElectionsIndiaContext db,
+            IRepository<ElectionBooth> boothrepo, ResourceManager resManager)
         {
             this.ekrepo = ekrepo;
             this.db = db;
             this.boothrepo = boothrepo;
+            this.resManager = resManager;
         }
         // GET: ElectionKiosk
         public ActionResult Index()
@@ -57,9 +61,10 @@ namespace Elections.UI.MVC.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                throw new Exception(ex.Message);
+               
             }
         }
 
@@ -83,9 +88,10 @@ namespace Elections.UI.MVC.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception ex)
             {
                 return View();
+                throw new Exception(ex.Message);
             }
         }
 
