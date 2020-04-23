@@ -1,8 +1,9 @@
 ﻿@page "/Voting"
 @using ElectionsIndia.SPA.Voting.Data
 @using ElectionsIndia.Models.ViewModels
+@using ElectionsIndia.Services
 
-@inject CastVotingService servCastVote
+@inject CastVoteService servCastVote
 <h3>Voting</h3>
 @foreach (var item in CandidateList)
 {

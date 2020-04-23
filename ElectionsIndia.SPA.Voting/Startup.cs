@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using ElectionsIndia.SPA.Voting.Data;
 using ElectionsIndia.DataAccess;
 using Microsoft.EntityFrameworkCore;
+using ElectionsIndia.Services;
 
 namespace ElectionsIndia.SPA.Voting
 {
@@ -32,7 +33,7 @@ namespace ElectionsIndia.SPA.Voting
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
-            services.AddScoped(typeof(CastVotingService), typeof(CastVotingService));
+            services.AddScoped(typeof(CastVoteService), typeof(CastVoteService));
             services.AddScoped(typeof(ElectionsIndiaContext), typeof(ElectionsIndiaContext));
 
         }

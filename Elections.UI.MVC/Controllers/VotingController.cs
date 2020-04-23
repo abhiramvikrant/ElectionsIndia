@@ -11,6 +11,7 @@ using EletionsIndia.Models.ViewModels;
 using ElectionsIndia.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ElectionsIndia.Services;
 
 namespace Elections.UI.MVC.Controllers
 {
@@ -33,6 +34,7 @@ namespace Elections.UI.MVC.Controllers
         private readonly IRepository<PoliticalParties> parepo;
         private readonly IRepository<ElectionType> typerepo;
         private readonly IRepository<VoteConfiguration> confrepo;
+        private readonly CastVoteService castVoteService;
 
         public VotingController(IRepository<VoteConfigurationViewModel> vcrepo,IRepository<VoteResult> resrepo,
             IRepository<VoteConfiguration> crepo, ElectionsIndiaContext db, IMapper mapper,
@@ -40,7 +42,7 @@ namespace Elections.UI.MVC.Controllers
             IRepository<City> cirepo, IRepository<Areas> arepo,IRepository<ElectionWard> ewardrepo,
             IRepository<ElectionBooth> borepo, IRepository<ElectionKiosk> kioskrepo, IRepository<Candidates> carepo
             ,IRepository<PoliticalParties> parepo, IRepository<ElectionType> typerepo,
-            IRepository<VoteConfiguration> confrepo)
+            IRepository<VoteConfiguration> confrepo, CastVoteService castVoteService)
         {
             this.vcrepo = vcrepo;
             this.resrepo = resrepo;
@@ -59,6 +61,7 @@ namespace Elections.UI.MVC.Controllers
             this.parepo = parepo;
             this.typerepo = typerepo;
             this.confrepo = confrepo;
+            this.castVoteService = castVoteService;
         }
         [HttpGet]
         public IActionResult Index()
