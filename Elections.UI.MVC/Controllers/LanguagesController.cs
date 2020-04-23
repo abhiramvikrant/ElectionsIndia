@@ -12,7 +12,7 @@ using ElectionsIndia.DataAccess.Repository;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Elections.UI.MVC.Controllers
-{[Authorize]
+{
     public class LanguagesController : Controller
     {
         private IRepository<Languages> _languagerepo;

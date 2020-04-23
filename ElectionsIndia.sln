@@ -16,6 +16,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EletionsIndia.Models", "Ele
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Elections.Live", "Elections.Live\Elections.Live.sqlproj", "{BF52C667-4201-4E7F-B1FF-78B2F3042472}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectionsIndia.SPA.Voting", "ElectionsIndia.SPA.Voting\ElectionsIndia.SPA.Voting.csproj", "{77BF7B81-7F73-49B0-B593-7688D0C02077}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{BF52C667-4201-4E7F-B1FF-78B2F3042472}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF52C667-4201-4E7F-B1FF-78B2F3042472}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BF52C667-4201-4E7F-B1FF-78B2F3042472}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{77BF7B81-7F73-49B0-B593-7688D0C02077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77BF7B81-7F73-49B0-B593-7688D0C02077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77BF7B81-7F73-49B0-B593-7688D0C02077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77BF7B81-7F73-49B0-B593-7688D0C02077}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

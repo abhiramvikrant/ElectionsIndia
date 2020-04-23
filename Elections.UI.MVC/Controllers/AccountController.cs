@@ -30,14 +30,14 @@ namespace Elections.UI.MVC.Controllers
         private readonly IMapper mapper;
         private readonly IRepository<Countries> courepo;
         private readonly IRepository<VW_CityWithActive> cityRepo;
-        private readonly ResourceManager resManager;
+        //private readonly ResourceManager resManager;
 
 
 
         // GET: Account
         public AccountController(UserManager<ApplicationUser> umanager, SignInManager<ApplicationUser> smanager,
             RoleManager<IdentityRole> rmanager, IMapper mapper, IRepository<Countries> courepo,
-            IRepository<VW_CityWithActive> cityRepo, ResourceManager resManager)
+            IRepository<VW_CityWithActive> cityRepo)
         {
             this.umanager = umanager;
             this.smanager = smanager;
@@ -45,7 +45,7 @@ namespace Elections.UI.MVC.Controllers
             this.mapper = mapper;
             this.courepo = courepo;
             this.cityRepo = cityRepo;
-            this.resManager = resManager;
+            //this.resManager = resManager;
         }
         [HttpGet]
         [AllowAnonymous]
@@ -59,10 +59,10 @@ namespace Elections.UI.MVC.Controllers
 
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (model is null)
-            {
-                throw new ArgumentNullException(nameof(model));
-            }
+            //if (model is null)
+            //{
+            //    throw new ArgumentNullException(nameof(model));
+            //}
 
             if (ModelState.IsValid)
             {
@@ -196,7 +196,7 @@ namespace Elections.UI.MVC.Controllers
             if (string.IsNullOrWhiteSpace(username))
             {
                 
-                throw new ArgumentException(resManager.GetString("usernamemissing",CultureInfo.CurrentCulture), nameof(username));
+                //throw new ArgumentException(resManager.GetString("usernamemissing",CultureInfo.CurrentCulture), nameof(username));
             }
 
             try
@@ -221,7 +221,7 @@ namespace Elections.UI.MVC.Controllers
         {
             if (string.IsNullOrWhiteSpace(RoleId))
             {
-                throw new ArgumentException(resManager.GetString("roleidmissing",CultureInfo.InvariantCulture), nameof(RoleId));
+                //throw new ArgumentException(resManager.GetString("roleidmissing",CultureInfo.InvariantCulture), nameof(RoleId));
             }
 
             var role = rmanager.Roles.Where(r => r.Id == RoleId).FirstOrDefault();
@@ -251,7 +251,7 @@ namespace Elections.UI.MVC.Controllers
 
             if (string.IsNullOrEmpty(RoleId))
             {
-                throw new ArgumentException(resManager.GetString("roleidmissing", CultureInfo.InvariantCulture), nameof(RoleId));
+                //throw new ArgumentException(resManager.GetString("roleidmissing", CultureInfo.InvariantCulture), nameof(RoleId));
             }
 
             var role = rmanager.Roles.Where(r => r.Id == models[0].RoleId).FirstOrDefault();
@@ -298,7 +298,7 @@ namespace Elections.UI.MVC.Controllers
         {
             if (string.IsNullOrWhiteSpace(rolename))
             {
-                throw new ArgumentException(resManager.GetString("rolenamenull", CultureInfo.InvariantCulture), nameof(rolename));
+                //throw new ArgumentException(resManager.GetString("rolenamenull", CultureInfo.InvariantCulture), nameof(rolename));
 
             }
 

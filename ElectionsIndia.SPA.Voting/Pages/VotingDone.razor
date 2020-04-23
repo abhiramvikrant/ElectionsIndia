@@ -1,0 +1,29 @@
+﻿@page "/votingdone/{CandidateId}"
+@inject ElectionsIndia.DataAccess.ElectionsIndiaContext db
+<h3>Voting Done</h3>
+<h5> Thanks a lot for Voting!</h5>
+
+@code {
+    [Parameter]
+    public string CandidateId { get; set; }
+    
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        var model = db.VoteConfiguration.Where(s => s.VoteConfigurationUID.ToString() == CandidateId).FirstOrDefault();
+        var voteresult = new ElectionsIndia.Models.VoteResult();
+        voteresult.AreaiD = model.AreaiD;
+        voteresult.BoothId = model.BoothId;
+        voteresult.CandidateId = model.CandidateId;
+        voteresult.CountryId = model.CountryId;
+        voteresult.DistrictId = model.DistrictId;
+        voteresult.ElectionTypeId = model.ElectionTypeId;
+        voteresult.PoliticalPartyId = model.PoliticalPartyId;
+        voteresult.KioskId = model.KioskId;
+        voteresult.WardId = model.WardId;
+        voteresult.StateId = model.StateId;
+
+        var result = db.VoteResult.Add(voteresult);
+        db.SaveChanges();
+    }
+}

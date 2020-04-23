@@ -1,0 +1,32 @@
+﻿@page "/Voting"
+@using ElectionsIndia.SPA.Voting.Data
+@using ElectionsIndia.Models.ViewModels
+
+@inject CastVotingService servCastVote
+<h3>Voting</h3>
+@foreach (var item in CandidateList)
+{
+    <div class="row mt-5">
+        <div class="col">@item.PoliticalPartyName</div>
+        <div class="col">@item.PoliticalPartyShortName</div>
+        <div class="col">@item.CandidateName</div>
+        <div class="col"><a href="/votingdone/@item.VoteConfigurationUID" class="btn btn-primary">Vote</a></div>
+    </div>
+}
+
+@code {
+    private IList<VoteConfigurationViewModel> CandidateList;
+    private int CandidateId;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        CandidateList = servCastVote.GetCandidates();
+    }
+
+   
+
+
+
+
+}

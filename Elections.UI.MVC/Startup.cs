@@ -14,6 +14,7 @@ using AutoMapper;
 using ElectionsIndia.DataAccess.UserFields;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Resources;
 
 namespace Elections.UI.MVC
 {
@@ -34,7 +35,7 @@ namespace Elections.UI.MVC
             //services.AddDbContext<ElectionsIndiaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ElCon")));
             services.AddDbContext<ElectionsIndiaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ElCon")));
             services.AddScoped(typeof(ElectionsIndiaContext), typeof(ElectionsIndiaContext));
-            
+            //services.AddScoped(typeof(ResourceManager), typeof(ResourceManager));
             services.AddScoped(typeof(UserManager<ApplicationUser>), typeof(UserManager<ApplicationUser>));            
             services.AddScoped(typeof(RoleManager<IdentityRole>), typeof(RoleManager<IdentityRole>));
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
