@@ -87,7 +87,7 @@ namespace Elections.UI.MVC.Controllers
                 s.StateName = data.Name;
                 s.IsActive = data.IsActive;
                 s.StateEnglishID = data.StateId;
-                s.LanguageID = _langrepo.GetAll().Where( m => m.Name.ToLower(CultureInfo.InvariantCulture) == "english").ToList()[0].LanguageId;
+                s.LanguageID = _langrepo.GetAll().Where( m => m.Name.ToUpperInvariant() == "ENGLISH").ToList()[0].LanguageId;
                 s.CountryEnglishID = data.CountryId;s.StateLanguagesID = 0;
                 return View(s);
             }
