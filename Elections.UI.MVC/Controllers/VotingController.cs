@@ -66,9 +66,10 @@ namespace Elections.UI.MVC.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var candidtaelist = db.VoteConfigurationViewModel.FromSqlInterpolated($"EXEC GetCandidateByBoothId")
-                               .ToList<VoteConfigurationViewModel>(); 
-            return View(candidtaelist);
+            //var candidtaelist = db.VoteConfigurationViewModel.FromSqlInterpolated($"EXEC GetCandidateByBoothId")
+            //                   .ToList<VoteConfigurationViewModel>(); 
+            var candidateList = castVoteService.GetCandidates();
+            return View(candidateList);
         }
 
         [HttpPost]

@@ -117,28 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="countrylanguagenamemissing" xml:space="preserve">
-    <value>CountryLanguageName parameter is null</value>
-    <comment>missing parameter</comment>
-  </data>
-  <data name="countrynamenull" xml:space="preserve">
-    <value>countryname is null</value>
-    <comment>null parameter</comment>
-  </data>
-  <data name="languagenamemissing" xml:space="preserve">
-    <value>Languagename paramter is  null</value>
-    <comment>null parameter</comment>
-  </data>
-  <data name="roleidmissing" xml:space="preserve">
-    <value>roleid is null</value>
-    <comment>null parameter</comment>
-  </data>
-  <data name="rolenamenull" xml:space="preserve">
-    <value>rolename is null</value>
-    <comment>null parameter</comment>
-  </data>
-  <data name="usernamemissing" xml:space="preserve">
-    <value>username parameter is null</value>
-    <comment>null poarameter</comment>
-  </data>
 </root>

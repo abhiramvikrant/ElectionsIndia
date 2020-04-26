@@ -14,7 +14,7 @@ using AutoMapper;
 using ElectionsIndia.DataAccess.UserFields;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using System.Resources;
+using ElectionsIndia.Services;
 
 namespace Elections.UI.MVC
 {
@@ -35,17 +35,19 @@ namespace Elections.UI.MVC
             //services.AddDbContext<ElectionsIndiaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ElCon")));
             services.AddDbContext<ElectionsIndiaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ElCon")));
             services.AddScoped(typeof(ElectionsIndiaContext), typeof(ElectionsIndiaContext));
-            //services.AddScoped(typeof(ResourceManager), typeof(ResourceManager));
+          
             services.AddScoped(typeof(UserManager<ApplicationUser>), typeof(UserManager<ApplicationUser>));            
             services.AddScoped(typeof(RoleManager<IdentityRole>), typeof(RoleManager<IdentityRole>));
+            services.AddScoped(typeof(CastVoteService));
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
             services.AddAutoMapper(c => c.AddProfile<AutoMapperConfig>(), typeof(Startup));
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ElectionsIndiaContext>().AddDefaultTokenProviders();
-            //services.AddEntityFrameworkSqlServer();
+            services.AddEntityFrameworkSqlServer();
             services.AddAuthenticationCore();
-           
-       
+      
+
+
 
         }
 
@@ -68,6 +70,8 @@ namespace Elections.UI.MVC
             app.UseRequestLocalization();
      
             app.UseAuthorization();
+            app.UseRequestLocalization();
+           
            
 
             app.UseEndpoints(endpoints =>

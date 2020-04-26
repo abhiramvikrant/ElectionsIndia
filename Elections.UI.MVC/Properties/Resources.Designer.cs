@@ -59,59 +59,5 @@ namespace Elections.UI.MVC.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to CountryLanguageName parameter is null.
-        /// </summary>
-        internal static string countrylanguagenamemissing {
-            get {
-                return ResourceManager.GetString("countrylanguagenamemissing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to countryname is null.
-        /// </summary>
-        internal static string countrynamenull {
-            get {
-                return ResourceManager.GetString("countrynamenull", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Languagename paramter is  null.
-        /// </summary>
-        internal static string languagenamemissing {
-            get {
-                return ResourceManager.GetString("languagenamemissing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to roleid is null.
-        /// </summary>
-        internal static string roleidmissing {
-            get {
-                return ResourceManager.GetString("roleidmissing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to rolename is null.
-        /// </summary>
-        internal static string rolenamenull {
-            get {
-                return ResourceManager.GetString("rolenamenull", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to username parameter is null.
-        /// </summary>
-        internal static string usernamemissing {
-            get {
-                return ResourceManager.GetString("usernamemissing", resourceCulture);
-            }
-        }
     }
 }

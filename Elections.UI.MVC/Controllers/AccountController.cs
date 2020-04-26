@@ -19,6 +19,7 @@ using ElectionsIndia.DataAccess.Repository;
 using ElectionsIndia.Models;
 using System.Resources;
 using System.Globalization;
+using System.Security.Principal;
 
 namespace Elections.UI.MVC.Controllers
 {
@@ -59,15 +60,14 @@ namespace Elections.UI.MVC.Controllers
 
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            //if (model is null)
-            //{
-            //    throw new ArgumentNullException(nameof(model));
-            //}
+            if (model is null)
+            {
+                throw new ArgumentNullException(nameof(model));
+            }
 
             if (ModelState.IsValid)
             {
                 var user = mapper.Map<ApplicationUser>(model);
-
                 var result = await smanager.PasswordSignInAsync(model.UserName, model.Password, true, false).ConfigureAwait(true);
 
 
@@ -93,17 +93,17 @@ namespace Elections.UI.MVC.Controllers
                         AllowRefresh = false
                     };
 
-                    await smanager.SignInWithClaimsAsync(u, ap, claims).ConfigureAwait(true);
+                 await smanager.SignInWithClaimsAsync(u, ap, claims).ConfigureAwait(true);
+                    var isauth = smanager.IsSignedIn(uPrincipal);
 
                     ViewBag.Auth = User.Identity.IsAuthenticated;
                 }
-                //return LocalRedirect($"~/account/login?handler=SetIdentity");
-
-
+                
 
 
                 return RedirectToAction("index", "languages");
 
+    
             }
             return View();
         }
