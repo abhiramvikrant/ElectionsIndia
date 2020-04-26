@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace EletionsIndia.Models.ViewModels
+namespace ElectionsIndia.Models.ViewModels
 {
     public class CandidateCreateViewModel
     {

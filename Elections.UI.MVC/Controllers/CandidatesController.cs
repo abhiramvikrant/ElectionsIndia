@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using EletionsIndia.Models.ViewModels;
+using ElectionsIndia.Models.ViewModels;
 using AutoMapper;
 using ElectionsIndia.Models;
 using ElectionsIndia.DataAccess.Repository;

@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EletionsIndia.Models\EletionsIndia.Models.csproj" />
+    <ProjectReference Include="..\EletionsIndia.Models\ElectionsIndia.Models.csproj" />
   </ItemGroup>
 
 </Project>

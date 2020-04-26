@@ -7,12 +7,19 @@
 <h3>Voting</h3>
 @foreach (var item in CandidateList)
 {
-    <div class="row mt-5">
-        <div class="col">@item.PoliticalPartyName</div>
-        <div class="col">@item.PoliticalPartyShortName</div>
-        <div class="col">@item.CandidateName</div>
-        <div class="col"><a href="/votingdone/@item.VoteConfigurationUID" class="btn btn-primary">Vote</a></div>
-    </div>
+<div class="row mt-5 table">
+    <div class="col">@item.PoliticalPartyName</div>
+    <div class="col">@item.PoliticalPartyShortName</div>
+    <div class="col">@item.CandidateName</div>
+    @if (item.PoliticalPartyShortName.ToUpperInvariant() == "NOTA")
+    {
+        <div class="col"><a href="/votingdone/@item.VoteConfigurationUID" class="btn btn-danger">Vote</a></div>
+    }
+    else
+    {
+    <div class="col"><a href="/votingdone/@item.VoteConfigurationUID" class="btn btn-primary">Vote</a></div>
+    }
+</div>
 }
 
 @code {

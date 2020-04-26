@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using EletionsIndia.Models.ViewModels;
+using ElectionsIndia.Models.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -67,7 +67,7 @@ namespace Elections.UI.MVC.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = mapper.Map<ApplicationUser>(model);
+      
                 var result = await smanager.PasswordSignInAsync(model.UserName, model.Password, true, false).ConfigureAwait(true);
 
 
@@ -94,7 +94,7 @@ namespace Elections.UI.MVC.Controllers
                     };
 
                  await smanager.SignInWithClaimsAsync(u, ap, claims).ConfigureAwait(true);
-                    var isauth = smanager.IsSignedIn(uPrincipal);
+                   
 
                     ViewBag.Auth = User.Identity.IsAuthenticated;
                 }

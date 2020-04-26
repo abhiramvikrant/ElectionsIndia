@@ -12,13 +12,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectionsIndia.DataAccess", "ElectionsIndia.DataAccess\ElectionsIndia.DataAccess.csproj", "{A0A61B9A-06C4-4372-A3DA-BB82D85239C6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EletionsIndia.Models", "EletionsIndia.Models\EletionsIndia.Models.csproj", "{BB18B8D4-8FBB-4523-911E-53418EB27A73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectionsIndia.Models", "EletionsIndia.Models\ElectionsIndia.Models.csproj", "{BB18B8D4-8FBB-4523-911E-53418EB27A73}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Elections.Live", "Elections.Live\Elections.Live.sqlproj", "{BF52C667-4201-4E7F-B1FF-78B2F3042472}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectionsIndia.SPA.Voting", "ElectionsIndia.SPA.Voting\ElectionsIndia.SPA.Voting.csproj", "{77BF7B81-7F73-49B0-B593-7688D0C02077}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectionsIndia.SPA.Voting", "ElectionsIndia.SPA.Voting\ElectionsIndia.SPA.Voting.csproj", "{77BF7B81-7F73-49B0-B593-7688D0C02077}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectionsIndia.Services", "ElectionsIndia.Services\ElectionsIndia.Services.csproj", "{2041D701-63D4-4E74-A61F-0DA34067F7E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectionsIndia.Services", "ElectionsIndia.Services\ElectionsIndia.Services.csproj", "{2041D701-63D4-4E74-A61F-0DA34067F7E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

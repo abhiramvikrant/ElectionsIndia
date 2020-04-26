@@ -4,8 +4,8 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using ElectionsIndia.Models.ViewModels;
 using ElectionsIndia.Models;
-using EletionsIndia.Models;
-using EletionsIndia.Models.ViewModels;
+using ElectionsIndia.Models;
+using ElectionsIndia.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using ElectionsIndia.DataAccess.UserFields;
 

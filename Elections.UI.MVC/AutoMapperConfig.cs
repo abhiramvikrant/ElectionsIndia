@@ -6,7 +6,7 @@ using AutoMapper;
 using ElectionsIndia.DataAccess.UserFields;
 using ElectionsIndia.Models;
 using ElectionsIndia.Models.ViewModels;
-using EletionsIndia.Models.ViewModels;
+using ElectionsIndia.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 
 namespace Elections.UI.MVC

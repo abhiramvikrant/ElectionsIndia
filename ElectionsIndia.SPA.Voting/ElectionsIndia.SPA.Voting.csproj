@@ -7,7 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ElectionsIndia.DataAccess\ElectionsIndia.DataAccess.csproj" />
     <ProjectReference Include="..\ElectionsIndia.Services\ElectionsIndia.Services.csproj" />
-    <ProjectReference Include="..\EletionsIndia.Models\EletionsIndia.Models.csproj" />
+    <ProjectReference Include="..\EletionsIndia.Models\ElectionsIndia.Models.csproj" />
   </ItemGroup>
 
 </Project>
