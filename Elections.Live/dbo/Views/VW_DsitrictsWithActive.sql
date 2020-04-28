@@ -1,11 +1,10 @@
-CREATE VIEW dbo.VW_CityWithActive
+﻿CREATE VIEW dbo.VW_DsitrictsWithActive
 AS
-SELECT        Name, CityID
-FROM            dbo.City
+SELECT        DistrictID, Name
+FROM            dbo.Districts
 WHERE        (IsActive = 1)
-
 GO
-EXECUTE sp_addextendedproperty @name = N'MS_DiagramPaneCount', @value = 1, @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'VIEW', @level1name = N'VW_CityWithActive';
+EXECUTE sp_addextendedproperty @name = N'MS_DiagramPaneCount', @value = 1, @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'VIEW', @level1name = N'VW_DsitrictsWithActive';
 
 
 GO
@@ -80,7 +79,7 @@ Begin DesignProperties =
          Left = 0
       End
       Begin Tables = 
-         Begin Table = "City"
+         Begin Table = "Districts"
             Begin Extent = 
                Top = 6
                Left = 38
@@ -116,5 +115,5 @@ Begin DesignProperties =
       End
    End
 End
-', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'VIEW', @level1name = N'VW_CityWithActive';
+', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'VIEW', @level1name = N'VW_DsitrictsWithActive';
 

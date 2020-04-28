@@ -9,6 +9,7 @@ using ElectionsIndia.DataAccess;
 using Elections.UI.MVC.Properties;
 using System.Resources;
 using System.Globalization;
+using Microsoft.EntityFrameworkCore;
 
 namespace Elections.UI.MVC.Controllers
 {
@@ -19,15 +20,17 @@ namespace Elections.UI.MVC.Controllers
         private IRepository<Languages> _langrepo;
         private IRepository<CountryLanguages> _countrylang;
         private readonly ResourceManager resManager;
+        private readonly IRepository<States> stateRepo;
 
         public CountriesController(IRepository<Countries> countryrep, ElectionsIndiaContext db, IRepository<Languages> langrepo, IRepository<CountryLanguages> countrylang
-            , ResourceManager resManager)
+            , ResourceManager resManager, IRepository<States> stateRepo)
         {
             _countryrepo = countryrep;
             _db = db;
             _langrepo = langrepo;
             _countrylang = countrylang;
             this.resManager = resManager;
+            this.stateRepo = stateRepo;
         }
         public IActionResult Index()
         {
@@ -133,6 +136,74 @@ namespace Elections.UI.MVC.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult MapStatesToCountry(int CountryId)
+        {
+            try
+            {
+                var list = _db.StateCountryViewModel.
+                    FromSqlInterpolated($"EXEC StateListByCountryId @CountryId={CountryId}").ToList();
+                if (list != null && list.Count > 0)                
+                return View(list); 
+            }
+            catch (System.Exception ex)
+            {
+
+                throw new System.Exception(ex.Message);
+            }
+
+            return View();
+            
+        }
+
+        [HttpPost]
+        public IActionResult MapStatesToCountry(IList<StateCountryViewModel> modelList)
+        {
+            if (modelList is null)
+            {
+                throw new System.ArgumentNullException(nameof(modelList));
+            }
+
+            try
+            {
+                for (int i = 0; i < modelList.Count; i++)
+                {
+                    var item = modelList[i];
+                    var clist = stateRepo.GetByID(item.StateId);
+                    if (item.BelongsToCountry == true)
+                    {
+                 
+                        if (clist.CountryId != item.CountryId)
+                        {
+                           var mockState= GetState(item);
+                            var result = stateRepo.Update(mockState);
+                           
+                        }
+                    }
+                }
+                return View();
+            }
+            catch (System.Exception ex)
+            {
+
+                throw new System.Exception(ex.Message);
+            }
+
+       
+
+        }
+
+        private States  GetState(StateCountryViewModel model)
+        {
+            var statMock = new States
+            {
+                StateId = model.StateId,
+                Name = model.State,
+                CountryId = model.CountryId,
+                IsActive = true
+            };
+            return statMock;
+        }
 
         [HttpPost]
         public IActionResult Create(CountryCreateViewModel c)

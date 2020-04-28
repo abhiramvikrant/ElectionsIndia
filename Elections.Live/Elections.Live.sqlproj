@@ -111,16 +111,8 @@
     <Build Include="dbo\Stored Procedures\PoliticalPartyInsert.sql" />
     <Build Include="dbo\Stored Procedures\Insert_Country_Languages.sql" />
     <Build Include="dbo\Stored Procedures\GetAllCountryByLanguages.sql" />
-    <Build Include="dbo\Stored Procedures\pr__SYS_MakeDeleteRecordProc.sql">
-      <QuotedIdentifier>Off</QuotedIdentifier>
-    </Build>
-    <Build Include="dbo\Stored Procedures\pr__SYS_MakeInsertRecordProc.sql" />
     <Build Include="dbo\Stored Procedures\GetAllAreas.sql" />
-    <Build Include="dbo\Stored Procedures\pr__SYS_MakeSelectRecordProc.sql">
-      <QuotedIdentifier>Off</QuotedIdentifier>
-    </Build>
     <Build Include="dbo\Stored Procedures\AreaList.sql" />
-    <Build Include="dbo\Stored Procedures\pr__SYS_MakeUpdateRecordProc.sql" />
     <Build Include="dbo\Stored Procedures\PoliticalPartyByID.sql" />
     <Build Include="dbo\Stored Procedures\GetAllVotingConfiguration.sql" />
     <Build Include="dbo\Stored Procedures\InsertArea.sql" />
@@ -158,5 +150,13 @@
     <Build Include="dbo\Stored Procedures\UpdateStates.sql" />
     <Build Include="dbo\Stored Procedures\GetCandidateByBoothId.sql" />
     <Build Include="dbo\Views\Create_VW_CityWithActive.sql" />
+    <Build Include="dbo\Tables\KiokAdmin.sql" />
+    <Build Include="dbo\Views\VW_DsitrictsWithActive.sql" />
+    <Build Include="dbo\Stored Procedures\StateListByCountryId.sql" />
+    <Build Include="dbo\Functions\fnTableHasPrimaryKey.sql" />
+    <Build Include="dbo\Functions\fnIsColumnPrimaryKey.sql" />
+    <Build Include="dbo\Functions\fnColumnDefault.sql" />
+    <Build Include="dbo\Functions\fnCleanDefaultValue.sql" />
+    <Build Include="dbo\Functions\fnTableColumnInfo.sql" />
   </ItemGroup>
 </Project>

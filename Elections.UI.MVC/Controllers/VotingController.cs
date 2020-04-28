@@ -6,8 +6,6 @@ using AutoMapper;
 using ElectionsIndia.DataAccess;
 using ElectionsIndia.DataAccess.Repository;
 using ElectionsIndia.Models;
-using ElectionsIndia.Models;
-using ElectionsIndia.Models.ViewModels;
 using ElectionsIndia.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

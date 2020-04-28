@@ -69,6 +69,8 @@ namespace ElectionsIndia.DataAccess
         public virtual DbSet<ElectionKioskListViewModel> ElectionKioskListViewModel { get; set; }
         public virtual DbSet<PoliticalPartyListViewModel> PoliticalPartyListViewModel { get; set; }
 
+        public virtual DbSet<StateCountryViewModel> StateCountryViewModel { get; set; }
+
         //public virtual DbSet<PoliticalPartyTranslationListViewModel> PoliticalPartyTranslationListViewModel { get; set; }
 
         public virtual DbSet<PoliticalPartyTranslation> PoliticalPartyTranslation { get; set; }

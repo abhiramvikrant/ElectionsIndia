@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 using AutoMapper;
 using ElectionsIndia.DataAccess.UserFields;
 using ElectionsIndia.Models;
 using ElectionsIndia.Models.ViewModels;
-using Microsoft.AspNetCore.Identity;
 
-namespace Elections.UI.MVC
+namespace ElectionsIndia.Services
 {
-    public class AutoMapperConfig : Profile
+   public  class AutoMapperServiceConfig: Profile
     {
-        public AutoMapperConfig()
+        public AutoMapperServiceConfig()
         {
+            
             CreateMap<VoteConfigurationViewModel, VoteResult>();
             CreateMap<VoteConfiguration, VoteResult>();
             CreateMap<VoteConfigurationCreateViewModel, VoteConfiguration>();
