@@ -6,7 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using ElectionsIndia.DataAccess;
-
+using Microsoft.AspNetCore.Http;
+using System;
 
 namespace Elections.UI.MVC.Controllers
 {
@@ -34,6 +35,52 @@ namespace Elections.UI.MVC.Controllers
             List<CountryListViewModel> objCountries = GetCountryLanguageList();
             return View(objCountries);
         }
+
+        [HttpGet]
+        public IActionResult MultipleStates(int countryid, string countryname)
+        {
+            ViewBag.CountryId = countryid;
+            ViewBag.CountryName = countryname;
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult MultipleStates(MultipleStatesViewModel model)
+        {
+            List<string> messages = new List<string>();
+            var state = model.StateList;
+            var splitState = state.Split(Environment.NewLine);
+            var cid = Convert.ToInt32(model.CountryId);
+            var cname = model.CountryName;
+            if (cid == null)
+            {
+                throw new Exception("CountryId can not be null");
+            }
+            if(cname == null)
+            {
+                throw new Exception("Countryname can not be null");
+            }
+            foreach (var item in splitState)
+            {
+                var splitter = item.Split(',');
+                States sts = new States { Name = splitter[0], IsActive = Convert.ToBoolean((splitter[1].Trim())), CountryId = cid, IsUT = Convert.ToBoolean(splitter[2].Trim()) };
+
+                int result = stateRepo.Create(sts);
+                if (result > 0)
+                {
+                    messages.Add($"{splitter[0]} Added successfully");
+                }
+                else
+                {
+                    messages.Add($"Adding {splitter[0]} failed");
+                }
+            }
+
+            return RedirectToAction("MapStatesToCountry", new { countryid = cid, countryname = cname });
+        }
+
+       
 
         private List<CountryListViewModel> GetCountryLanguageList()
         {
@@ -123,6 +170,7 @@ namespace Elections.UI.MVC.Controllers
             try
             {
                 ViewBag.InitialCountryName = countryname;
+                ViewBag.InitialCountryId = CountryId;
                 var list = _db.StateCountryViewModel.
                     FromSqlInterpolated($"EXEC StateListByCountryId {CountryId}").ToList();
                 if (list != null )

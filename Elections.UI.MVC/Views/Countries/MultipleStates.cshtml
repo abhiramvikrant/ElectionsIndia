@@ -1,0 +1,22 @@
+﻿@model MultipleStatesViewModel
+@{
+    ViewData["Title"] = "MultipleStates";
+}
+<form method="post">
+    <div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <label>Add multiple states with comma separated Active Flag and Is Unition Territory flag( like Kerala, true, true) per line</label><br />
+            <textarea id="txtStates" asp-for="StateList"  class="form-control textareaheight" placeholder="Sample text Kerala, 1, 0"></textarea>
+            <input type="hidden" asp-for="CountryId" value="@ViewBag.CountryId" id="hdCountryId"  />
+            <input type="hidden" asp-for="CountryName" value="@ViewBag.CountryName" id="hdCountryName"  />
+        </div>
+        <div class="col-md-6 mt-5 ">
+         <button asp-action="MultipleStates" asp-controller="Countries" class="btn btn-primary" type="submit">Add States</button>
+            @*<a asp-action="MultipleStates" asp-controller="Countries" 
+                    class="btn btn-primary">Add States</a>*@
+        </div>
+    </div>
+</div>
+    </form>
+

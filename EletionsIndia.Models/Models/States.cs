@@ -20,6 +20,7 @@ namespace ElectionsIndia.Models
         public bool IsActive { get; set; }
         public int? CountryId { get; set; }
 
+        public bool IsUT { get; set; }
         public virtual Countries Country { get; set; }
         public virtual ICollection<ElectionResult> ElectionResult { get; set; }
         public virtual ICollection<Elections> Elections { get; set; }
