@@ -77,7 +77,7 @@ namespace Elections.UI.MVC.Controllers
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
-                return new JsonResult($"Error happened: {ex.InnerException.Message} ");
+               
             }
 
             return View();

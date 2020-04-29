@@ -14,7 +14,6 @@ using ElectionsIndia.DataAccess.UserFields;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
-using ElectionsIndia.Models.ViewModels;
 using ElectionsIndia.DataAccess.Repository;
 using ElectionsIndia.Models;
 using System.Resources;

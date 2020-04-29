@@ -1,26 +1,36 @@
 ﻿@model IList<StateCountryViewModel>
 
 @{
-    ViewData["Title"] = $"Map States To {Model[0].Country}";
+    ViewData["Title"] = $"Map States To {ViewBag.InitialCountryName}";
 }
 
-    <h4>ViewData["Title"]</h4>
+    <h4>@ViewData["Title"]</h4>
     <form method="post">
-        <div class="container-fluid">
-            @for (int i = 0; i < Model.Count; i++)
-            {
-                <div class="row">
-                    <div class="col-md-2"><input asp-for="@Model[i].BelongsToCountry" type="checkbox" class="form-check-input" /></div>
-                    <div class="col">
-                        <label class="form-control" asp-for="@Model[i].State">@Model[i].State</label>
-                        <input type="hidden" asp-for="@Model[i].StateId" value="@Model[i].StateId" />
-                        <input type="hidden" asp-for="@Model[i].Country" value="@Model[i].Country" />
-                        <input type="hidden" asp-for="@Model[i].CountryId" value="@Model[i].CountryId" />
-                    </div>
-                </div>
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-5 ">
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <div class="row ">
+                            <div class="col-1 p-0 m-0"><input asp-for="@Model[i].BelongsToCountry" type="checkbox" class="form-check-input" /></div>
+                            <div class="col-4 text-left">
+                                <label asp-for="@Model[i].State">@Model[i].State</label>
+                                <input type="hidden" asp-for="@Model[i].State" />
+                                <input type="hidden" asp-for="@Model[i].InitialCountryId" />
+                                <input type="hidden" asp-for="@Model[i].InitialCountryName" />
+                                <input type="hidden" asp-for="@Model[i].StateId" value="@Model[i].StateId" />
+                                <input type="hidden" asp-for="@Model[i].Country" value="@Model[i].Country" />
+                                <input type="hidden" asp-for="@Model[i].CountryId" value="@Model[i].CountryId" />
+                            </div>
+                        </div>
 
-            }
-            <button type="submit" class="btn btn-primary">Update</button>
+                    }
+                    <div class="col-1">&nbsp;</div>
+                    <div class="col-4"><button type="submit" class="btn btn-primary">Update</button></div>
+                </div>
+            </div>
+           
 
         </div>
     </form>

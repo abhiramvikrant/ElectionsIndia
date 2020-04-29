@@ -6,10 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using ElectionsIndia.DataAccess;
-using Elections.UI.MVC.Properties;
-using System.Resources;
-using System.Globalization;
-using Microsoft.EntityFrameworkCore;
+
 
 namespace Elections.UI.MVC.Controllers
 {
@@ -19,17 +16,17 @@ namespace Elections.UI.MVC.Controllers
         private ElectionsIndiaContext _db;
         private IRepository<Languages> _langrepo;
         private IRepository<CountryLanguages> _countrylang;
-        private readonly ResourceManager resManager;
+       
         private readonly IRepository<States> stateRepo;
 
         public CountriesController(IRepository<Countries> countryrep, ElectionsIndiaContext db, IRepository<Languages> langrepo, IRepository<CountryLanguages> countrylang
-            , ResourceManager resManager, IRepository<States> stateRepo)
+            , IRepository<States> stateRepo)
         {
             _countryrepo = countryrep;
             _db = db;
             _langrepo = langrepo;
             _countrylang = countrylang;
-            this.resManager = resManager;
+           
             this.stateRepo = stateRepo;
         }
         public IActionResult Index()
@@ -58,24 +55,8 @@ namespace Elections.UI.MVC.Controllers
             return View();
         }
         [HttpGet("{Controller}/Edit")]
-        public IActionResult Edit(string languagename, string countrylanguagename,  string countryname, int languageid, int clang)
+        public IActionResult Edit(string languagename,  string countryname, int languageid, int clang)
         {
-            if (string.IsNullOrEmpty(languagename))
-            {
-                throw new System.ArgumentException(resManager.GetString("languagenamemissing", CultureInfo.CurrentCulture), nameof(languagename));
-
-            }
-
-            if (string.IsNullOrEmpty(countrylanguagename))
-            {
-                throw new System.ArgumentException(resManager.GetString("countrylanguagenamemissing", CultureInfo.CurrentCulture),nameof(countrylanguagename));
-            }
-
-            if (string.IsNullOrEmpty(countryname))
-            {
-                throw new System.ArgumentException(resManager.GetString("countrynamemissing",CultureInfo.InvariantCulture), nameof(countryname));
-            }
-
             CountryEditViewModel ced = null;
             if (languagename == "English")
             {
@@ -137,13 +118,20 @@ namespace Elections.UI.MVC.Controllers
         }
 
         [HttpGet]
-        public IActionResult MapStatesToCountry(int CountryId)
+        public IActionResult MapStatesToCountry(int CountryId, string countryname)
         {
             try
             {
+                ViewBag.InitialCountryName = countryname;
                 var list = _db.StateCountryViewModel.
-                    FromSqlInterpolated($"EXEC StateListByCountryId @CountryId={CountryId}").ToList();
-                if (list != null && list.Count > 0)                
+                    FromSqlInterpolated($"EXEC StateListByCountryId {CountryId}").ToList();
+                if (list != null )
+                    foreach (var item in list)
+                    {
+                        item.InitialCountryId = CountryId;
+                        item.InitialCountryName = countryname;
+
+                    }
                 return View(list); 
             }
             catch (System.Exception ex)
@@ -163,25 +151,36 @@ namespace Elections.UI.MVC.Controllers
             {
                 throw new System.ArgumentNullException(nameof(modelList));
             }
-
+           
             try
             {
                 for (int i = 0; i < modelList.Count; i++)
                 {
                     var item = modelList[i];
-                    var clist = stateRepo.GetByID(item.StateId);
+                    var clist = _db.States.AsNoTracking().Where(s => s.StateId == item.StateId).FirstOrDefault();
                     if (item.BelongsToCountry == true)
                     {
                  
                         if (clist.CountryId != item.CountryId)
                         {
-                           var mockState= GetState(item);
+                           var mockState= GetState(item, item.InitialCountryId);
                             var result = stateRepo.Update(mockState);
                            
                         }
                     }
+                    else if(item.BelongsToCountry == false)
+                    {
+                        if(clist.CountryId == item.CountryId)
+                        {
+                          var mockState = GetState(item, -1);
+                         
+                            stateRepo.Update(mockState);
+                        }
+                    }
+                    
                 }
-                return View();
+                return RedirectToAction("MapStatesToCountry",
+                    new { CountryId = modelList[0].InitialCountryId, countryname = modelList[0].InitialCountryName});
             }
             catch (System.Exception ex)
             {
@@ -193,14 +192,14 @@ namespace Elections.UI.MVC.Controllers
 
         }
 
-        private States  GetState(StateCountryViewModel model)
+        private States  GetState(StateCountryViewModel model, int? CtryId)
         {
             var statMock = new States
             {
                 StateId = model.StateId,
                 Name = model.State,
-                CountryId = model.CountryId,
-                IsActive = true
+                IsActive = true,
+                CountryId = CtryId != -1 ? CtryId : null,
             };
             return statMock;
         }

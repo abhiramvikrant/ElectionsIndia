@@ -1,5 +1,4 @@
-﻿@using ElectionsIndia.Models.ViewModels
-@model IEnumerable<StateListViewModel>
+﻿@model IEnumerable<StateListViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -21,23 +20,30 @@
             <div class="col-md-2"><label class="form-control-plaintext">@item.CountryName</label></div>
             <div class="col-md-2"><label class="form-control-plaintext">@item.LanguageName</label></div>
             
-            <div class="co-md-2">
+            <div class="co-md-6">
                 <div class="row">
-                <div class="col">
-                <a class="btn btn-outline-info mb-4" asp-controller="States" asp-action="Edit" asp-route-stateid="@item.StateID" asp-route-slangid="@item.StateLanguagesID">Edit</a></div>
-                <div>
-                <div class="col btn btn-outline-success mb-4" style="color:white">
-                    @Html.ActionLink("Delete", "Delete", new { stateid = item.StateID, slang = item.StateLanguagesID },
-
-                new { onclick = "return confirm('Are you sure you want to delete?')" })
-                </div>
-                    
+                    <div class="col">
+                        <a class="btn btn-outline-info mb-4" asp-controller="States" asp-action="Edit" asp-route-stateid="@item.StateID" asp-route-slangid="@item.StateLanguagesID">Edit</a>
                     </div>
-            </div>
-        </div>
+                    <div class="col">
+                        <a class="btn btn-outline-info mb-4" asp-controller="States" asp-action="MapDistricts" asp-route-stateid="@item.StateID" asp-route-stateName="@item.StateName">Manage Districts</a>
+                    </div>
+                    <div>
+                        <div>
+
+                            <div class="col btn btn-outline-success mb-4" style="color:white">
+                                @Html.ActionLink("Delete", "Delete", new { stateid = item.StateID, slang = item.StateLanguagesID },
+
+                            new { onclick = "return confirm('Are you sure you want to delete?')" })
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             <br />
        
     </div>
+            </div>
         }
         </div>
 

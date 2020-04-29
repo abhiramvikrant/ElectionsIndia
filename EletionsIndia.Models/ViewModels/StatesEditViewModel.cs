@@ -17,7 +17,7 @@ namespace ElectionsIndia.Models.ViewModels
         [DisplayAttribute(Name = "Is Active")]
         public bool IsActive { get; set; }
 
-        public int CountryID { get; set; }
+        public int? CountryID { get; set; }
 
         public string Language { get; set; }
 
@@ -25,7 +25,7 @@ namespace ElectionsIndia.Models.ViewModels
 
         public int StateEnglishID { get; set; }
 
-        public int CountryEnglishID { get; set; }
+        public int? CountryEnglishID { get; set; }
 
        
         public string CountryName { get; set; }

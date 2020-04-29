@@ -16,13 +16,6 @@ namespace ElectionsIndia.Models
         public bool IsActive { get; set; }
         public int StateId { get; set; }
         public int? CountryId { get; set; }
-        public string StateLanguageName { get; set; }
-        public string StateLanguageName1 { get; set; }
-        public string StateLanguageName2 { get; set; }
-        public string StateLanguageName3 { get; set; }
-        public string StateLanguagename4 { get; set; }
-        public string StateLanguageName5 { get; set; }
-
-        public virtual ICollection<City> City { get; set; }
+       public virtual ICollection<City> City { get; set; }
     }
 }

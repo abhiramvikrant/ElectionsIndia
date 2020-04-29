@@ -153,10 +153,5 @@
     <Build Include="dbo\Tables\KiokAdmin.sql" />
     <Build Include="dbo\Views\VW_DsitrictsWithActive.sql" />
     <Build Include="dbo\Stored Procedures\StateListByCountryId.sql" />
-    <Build Include="dbo\Functions\fnTableHasPrimaryKey.sql" />
-    <Build Include="dbo\Functions\fnIsColumnPrimaryKey.sql" />
-    <Build Include="dbo\Functions\fnColumnDefault.sql" />
-    <Build Include="dbo\Functions\fnCleanDefaultValue.sql" />
-    <Build Include="dbo\Functions\fnTableColumnInfo.sql" />
   </ItemGroup>
 </Project>
