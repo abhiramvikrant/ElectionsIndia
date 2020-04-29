@@ -51,7 +51,7 @@ namespace Elections.UI.MVC.Controllers
         {
         
             ViewBag.StateList = _staterepo.GetAll().ToList();
-            ViewBag.CountryList = _db.Countries.FromSqlRaw("EXEC GetAllCountries").ToList();
+            //ViewBag.CountryList = _db.Countries.FromSqlRaw("EXEC GetAllCountries").ToList();
             
 
         }

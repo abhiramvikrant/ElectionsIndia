@@ -15,15 +15,11 @@ namespace ElectionsIndia.Models.ViewModels
 		[Required]
 		public string Name { get; set; }
 		[Required][DisplayAttribute(Name = "Is Active")]
-		public bool IsActive { get; set; }
-	
-		[Required]
-		[DisplayAttribute(Name = "State Name")]
+		public bool IsActive { get; set; }		
 		public int StateID { get; set; }
 		[Required]
-		[DisplayAttribute(Name = "Country Name")]
-		public int CountryID { get; set; }
-	public string StateName { get; set; }
-        public string CountryName { get; set; }
+		[DisplayAttribute(Name = "State Name")]
+		public string StateName { get; set; }
+       
     }
 }

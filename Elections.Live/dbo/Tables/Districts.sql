@@ -3,9 +3,10 @@
     [Name]       NVARCHAR (100) NOT NULL,
     [IsActive]   BIT            NOT NULL,
     [StateID]    INT            NOT NULL,
-    [CountryID]  INT            NULL,
     CONSTRAINT [PK_Districts] PRIMARY KEY CLUSTERED ([DistrictID] ASC)
 );
+
+
 
 
 
