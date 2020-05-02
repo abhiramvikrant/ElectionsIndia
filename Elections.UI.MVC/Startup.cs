@@ -39,6 +39,8 @@ namespace Elections.UI.MVC
             services.AddScoped(typeof(UserManager<ApplicationUser>), typeof(UserManager<ApplicationUser>));            
             services.AddScoped(typeof(RoleManager<IdentityRole>), typeof(RoleManager<IdentityRole>));
             services.AddScoped(typeof(CastVoteService));
+            services.AddScoped(typeof(DistrictService));
+            services.AddDbClass();
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
             services.AddAutoMapper(c => c.AddProfile<AutoMapperConfig>(), typeof(Startup));
             services.AddIdentity<ApplicationUser, IdentityRole>()

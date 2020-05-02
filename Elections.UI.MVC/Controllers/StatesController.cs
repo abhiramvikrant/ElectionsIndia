@@ -39,7 +39,7 @@ namespace Elections.UI.MVC.Controllers
 
         private List<StateListViewModel> GetAllStates()
         {
-            var r = _staterepo.GetAll().ToList();
+            //List<States> r = _staterepo.GetAll().ToList();
             // use as no tracking otherwise, the data will be duplicated in the StatelistViewModel
             return _db.StateListViewModel.FromSqlRaw("EXEC GetAllStatesWithLanguages").AsNoTracking().ToList(); }
 

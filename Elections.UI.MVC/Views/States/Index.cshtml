@@ -25,8 +25,8 @@
                     <div class="col">
                         <a class="btn btn-outline-info mb-4" asp-controller="States" asp-action="Edit" asp-route-stateid="@item.StateID" asp-route-slangid="@item.StateLanguagesID">Edit</a>
                     </div>
-                    <div class="col">
-                        <a class="btn btn-outline-info mb-4" asp-controller="States" asp-action="MapDistricts" asp-route-stateid="@item.StateID" asp-route-stateName="@item.StateName">Manage Districts</a>
+                    <div class="col-4">
+                        <a class="btn btn-outline-info mb-4" asp-controller="Districts" asp-action="MapDistricts" asp-route-stateid="@item.StateID" asp-route-stateName="@item.StateName">Manage Districts</a>
                     </div>
                     <div>
                         <div>

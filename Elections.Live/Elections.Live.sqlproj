@@ -153,5 +153,6 @@
     <Build Include="dbo\Tables\KiokAdmin.sql" />
     <Build Include="dbo\Views\VW_DsitrictsWithActive.sql" />
     <Build Include="dbo\Stored Procedures\StateListByCountryId.sql" />
+    <Build Include="dbo\Stored Procedures\DisrtrictListByStateId.sql" />
   </ItemGroup>
 </Project>

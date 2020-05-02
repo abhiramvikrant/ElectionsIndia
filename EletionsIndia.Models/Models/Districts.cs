@@ -14,8 +14,8 @@ namespace ElectionsIndia.Models
         public int DistrictId { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
-        public int StateId { get; set; }
-        public int? CountryId { get; set; }
+        public int? StateId { get; set; }
+       
        public virtual ICollection<City> City { get; set; }
     }
 }

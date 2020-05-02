@@ -8,6 +8,8 @@ using System.Linq;
 using ElectionsIndia.DataAccess;
 using Microsoft.AspNetCore.Http;
 using System;
+using ElectionsIndia.Services;
+using ElectionsIndia.Services.Interfaces;
 
 namespace Elections.UI.MVC.Controllers
 {
@@ -19,9 +21,12 @@ namespace Elections.UI.MVC.Controllers
         private IRepository<CountryLanguages> _countrylang;
        
         private readonly IRepository<States> stateRepo;
+        private readonly IDistrictService distService;
+        private readonly IStringSplitter strSplitter;
 
         public CountriesController(IRepository<Countries> countryrep, ElectionsIndiaContext db, IRepository<Languages> langrepo, IRepository<CountryLanguages> countrylang
-            , IRepository<States> stateRepo)
+            , IRepository<States> stateRepo, IDistrictService distService,
+            IStringSplitter strSplitter)
         {
             _countryrepo = countryrep;
             _db = db;
@@ -29,6 +34,8 @@ namespace Elections.UI.MVC.Controllers
             _countrylang = countrylang;
            
             this.stateRepo = stateRepo;
+            this.distService = distService;
+            this.strSplitter = strSplitter;
         }
         public IActionResult Index()
         {
@@ -48,32 +55,39 @@ namespace Elections.UI.MVC.Controllers
         [HttpPost]
         public IActionResult MultipleStates(MultipleStatesViewModel model)
         {
-            List<string> messages = new List<string>();
-            var state = model.StateList;
-            var splitState = state.Split(Environment.NewLine);
             var cid = Convert.ToInt32(model.CountryId);
             var cname = model.CountryName;
-            if (cid == null)
+            if (model is null)
             {
-                throw new Exception("CountryId can not be null");
+                throw new ArgumentNullException(nameof(model));
             }
-            if(cname == null)
+            
+            if (cname == null)
             {
                 throw new Exception("Countryname can not be null");
             }
+            if (cid == null)
+            {
+                throw new Exception("cid can not be null");
+            }
+            List<string> messages = new List<string>();
+            var state = model.StateList;
+            var splitState =strSplitter.SendTArray(state);
+           
+           
             foreach (var item in splitState)
             {
-                var splitter = item.Split(',');
-                States sts = new States { Name = splitter[0], IsActive = Convert.ToBoolean((splitter[1].Trim())), CountryId = cid, IsUT = Convert.ToBoolean(splitter[2].Trim()) };
+           
+                States sts = new States { Name = item.Name, IsActive = item.IsActive, CountryId = cid, IsUT = item.IsUT };
 
                 int result = stateRepo.Create(sts);
                 if (result > 0)
                 {
-                    messages.Add($"{splitter[0]} Added successfully");
+                    messages.Add($"{item.Name} Added successfully");
                 }
                 else
                 {
-                    messages.Add($"Adding {splitter[0]} failed");
+                    messages.Add($"Adding {item.Name} failed");
                 }
             }
 

@@ -14,6 +14,7 @@ namespace ElectionsIndia.DataAccess
     { 
         public ElectionsIndiaContext()
         {
+            
         }
 
         public ElectionsIndiaContext(DbContextOptions<ElectionsIndiaContext> options)
@@ -86,6 +87,8 @@ namespace ElectionsIndia.DataAccess
         public virtual DbSet<VW_CityWithActive> VW_CityWithActive { get; set; }
 
         public virtual DbSet<VW_DsitrictsWithActive> VW_DsitrictsWithActive { get; set; }
+
+        public virtual DbSet<DistrictCreateViewModel> DistrictCreateViewModel { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 

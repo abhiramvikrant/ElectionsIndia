@@ -1,0 +1,18 @@
+﻿using Microsoft.Extensions.DependencyInjection;
+
+using ElectionsIndia.DataAccess;
+using ElectionsIndia.Services.Interfaces;
+
+namespace ElectionsIndia.Services
+{
+   public static class IServiceCollectionExtension
+    {
+        public static IServiceCollection AddDbClass(this IServiceCollection services)
+        {
+            services.AddTransient<ElectionsIndiaContext, ElectionsIndiaContext>();
+            services.AddTransient<IDistrictService, DistrictService>();
+            services.AddTransient<IStringSplitter, StringSpltter>();
+            return services;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+﻿@model IList<DistrictCreateViewModel>
+
+@{
+    ViewData["Title"] = $"Map Districts to {@ViewBag.InitialStateName}";
+}
+
+<h4>Map Districts to @ViewBag.InitialStateName</h4>
+<hr />
+
+<div>
+    <a class="btn btn-primary" asp-action="MultipleDistricts" asp-controller="districts" asp-route-stateid="@ViewBag.InitialStateId" asp-route-stateName="@ViewBag.InitialStateName">Add Multiple Districts</a>
+</div>
+<br />
+<form method="post">
+
+    <table class="table">
+
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+
+                <tr>
+                    <td>
+                        @Html.HiddenFor(modelItem => @Model[i].DistrictId)
+                        @Html.HiddenFor(modelItem => @Model[i].IsActive)
+                        @Html.HiddenFor(modelItem => @Model[i].StateId)
+                        @Html.HiddenFor(modelItem => @Model[i].InitialStateId)
+                        @Html.HiddenFor(modelItem => @Model[i].InitialStateName)
+                        @Html.CheckBoxFor(modelItem => @Model[i].BelongsToState)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => @Model[i].Name)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div>
+        <button type="submit" asp-controller="districts" asp-action="MapDistricts" class="btn btn-primary">Update</button>
+    </div>
+</form>
