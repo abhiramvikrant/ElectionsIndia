@@ -12,6 +12,7 @@ namespace ElectionsIndia.Services
             services.AddTransient<ElectionsIndiaContext, ElectionsIndiaContext>();
             services.AddTransient<IDistrictService, DistrictService>();
             services.AddTransient<IStringSplitter, StringSpltter>();
+            services.AddTransient<ICityService, CityServices>();
             return services;
         }
     }

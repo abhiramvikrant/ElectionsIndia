@@ -4,11 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h4>District List</h4>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
+
 <table class="table">
     <thead>
         <tr>
@@ -40,14 +39,15 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsActive)           
+                @Html.CheckBoxFor(modelItem => item.IsActive)           
             </td>
             
           
             <td>
                 <a asp-controller="Districts" asp-action="Edit" asp-route-districtid="@item.DistrictID" class="btn btn-info">Edit</a>
-                <a asp-controller="Districts" asp-action="Delete" asp-route-districtid="@item.DistrictID" class="btn btn-info">Delete</a>
-               
+                <a class="btn btn-info" asp-controller="city" asp-action="MapCities" asp-route-districtid="@item.DistrictID" asp-route-districtname="@item.Name">Manage Cities</a>
+                <a asp-controller="Districts" asp-action="Delete" asp-route-districtid="@item.DistrictID" class="btn btn-info" onclick="return confirm('Are you sure about deleting the district?');">Delete</a>
+
             </td>
         </tr>
 }

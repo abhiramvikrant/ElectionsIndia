@@ -89,6 +89,8 @@ namespace ElectionsIndia.DataAccess
         public virtual DbSet<VW_DsitrictsWithActive> VW_DsitrictsWithActive { get; set; }
 
         public virtual DbSet<DistrictCreateViewModel> DistrictCreateViewModel { get; set; }
+        public virtual DbSet<CityCreateViewModel> CityCreateViewModel { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 

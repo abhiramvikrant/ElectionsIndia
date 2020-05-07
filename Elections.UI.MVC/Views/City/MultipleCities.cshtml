@@ -1,0 +1,33 @@
+﻿@model MultipleCitiesViewModel
+
+@{
+    ViewData["Title"] = "MultipleCities";
+}
+
+
+
+<h4>Multiple Cities </h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CityList" class="control-label"></label>
+                <textarea asp-for="CityList" class="form-control"></textarea>
+                <span asp-validation-for="CityList" class="text-danger"></span>
+                @Html.HiddenFor(modelItem => @Model.DistrictId)
+                @Html.HiddenFor(modelItem => @Model.DistrictName)
+            </div>
+          
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

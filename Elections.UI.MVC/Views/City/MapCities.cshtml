@@ -1,0 +1,45 @@
+﻿@model IList<CityCreateViewModel>
+
+@{
+    ViewData["Title"] = "Map Cities to District";
+}
+
+<h4>Map Cities To @ViewBag.InitialDistrictName</h4>
+<br />
+<a asp-action="multiplecities" asp-controller="city" class="btn btn-info"asp-route-districtid="@ViewBag.InitialDistrictId"
+  asp-route-districtname="@ViewBag.InitialDistrictName">Add Multiple Cities
+ </a>
+<br />
+<br />
+
+<form method="post">
+    <div class="container">
+        @for (int i = 0; i < Model.Count; i++)
+        {
+
+            <div class="row">
+                <div class="form-check m-0 p-1">
+                    @Html.HiddenFor(modelItem => @Model[i].DistrictId)
+                    @Html.HiddenFor(modelItem => @Model[i].IsActive)
+                    @Html.HiddenFor(modelItem => @Model[i].InitialDistrictId)
+                    @Html.HiddenFor(modelItem => @Model[i].InitialDistrictName)
+                    @Html.HiddenFor(modelItem => @Model[i].CityId)
+                    @Html.HiddenFor(modelItem => @Model[i].Name)
+
+                    @Html.CheckBoxFor(modelItem => @Model[i].BelongsToDistrict)
+                </div>
+                <div class="col-md-3 text-left m-0 p-1">
+                    <label asp-for="@Model[i].Name">@Model[i].Name</label>
+                </div>
+            </div>
+        }
+        <br />
+        <div class="row">
+            <div>
+                <button type="submit" asp-action="MapCities" asp-controller="city" class="btn btn-info">
+                    Update
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

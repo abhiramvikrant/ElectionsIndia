@@ -154,5 +154,6 @@
     <Build Include="dbo\Views\VW_DsitrictsWithActive.sql" />
     <Build Include="dbo\Stored Procedures\StateListByCountryId.sql" />
     <Build Include="dbo\Stored Procedures\DisrtrictListByStateId.sql" />
+    <Build Include="dbo\Stored Procedures\CityLisByDistictId.sql" />
   </ItemGroup>
 </Project>

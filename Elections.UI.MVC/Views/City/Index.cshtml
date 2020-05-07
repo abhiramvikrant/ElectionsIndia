@@ -21,33 +21,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.IsActive)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CountryName)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.StateName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DistrictName)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StateLanguageName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StateLanguageName_1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StateLanguageName_2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StateLanguageName_3)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StateLanguagename_4)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StateLanguageName_5)
-            </th>
+           
 
             <th></th>
         </tr>
@@ -64,36 +45,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CountryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StateName)
-            </td>
+            
+               
+            
+            
             <td>
                 @Html.DisplayFor(modelItem => item.DistrictName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StateLanguageName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StateLanguageName_1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StateLanguageName_2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StateLanguageName_3)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StateLanguagename_4)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StateLanguageName_5)
-            </td>
+            
 
             <td>
                 <a asp-controller="City" asp-action="Edit" asp-route-cityid="@item.CityId" class="btn btn-info">Edit</a>
+               
                 <a asp-controller="City" asp-action="Delete" asp-route-cityid="@item.CityId" class="btn btn-danger">Delte</a>
 
             </td>

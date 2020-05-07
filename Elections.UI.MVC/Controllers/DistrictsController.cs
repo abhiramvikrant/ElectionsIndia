@@ -57,7 +57,7 @@ namespace Elections.UI.MVC.Controllers
         {
 
             var districtlist = strSplitter.SendTArray(model.MultipleDistricts);
-            List<SplitterReturnViewModel> returnObj = new List<SplitterReturnViewModel>();
+  
           
             foreach (var item in districtlist)
             {

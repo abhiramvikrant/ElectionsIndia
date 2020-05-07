@@ -7,19 +7,14 @@ namespace ElectionsIndia.Models
     {
         public City()
         {
-            ElectionArea = new HashSet<ElectionArea>();
+            
         }
 
         public int CityId { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
-        public int DistrictId { get; set; }
-        public string StateLanguageName { get; set; }
-        public string StateLanguageName_1 { get; set; }
-        public string StateLanguageName_2 { get; set; }
-        public string StateLanguageName_3 { get; set; }
-        public string StateLanguagename_4 { get; set; }
-        public string StateLanguageName_5 { get; set; }
+        public int? DistrictId { get; set; }
+
 
         public virtual Districts District { get; set; }
         public virtual ICollection<ElectionArea> ElectionArea { get; set; }
