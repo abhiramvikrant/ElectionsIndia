@@ -56,7 +56,7 @@
 
             <td>
                 <a asp-controller="City" asp-action="Edit" asp-route-cityid="@item.CityId" class="btn btn-info">Edit</a>
-               
+               <a asp-controller="Areas" asp-action="MapAreas" asp-route-cityid ="@item.CityId" asp-route-cityname="@item.Name" class="btn btn-info">Manage Areas</a> 
                 <a asp-controller="City" asp-action="Delete" asp-route-cityid="@item.CityId" class="btn btn-danger">Delte</a>
 
             </td>

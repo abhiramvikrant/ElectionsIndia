@@ -1,0 +1,34 @@
+﻿
+@model MultiplAreaViewModel
+
+@{
+    ViewData["Title"] = "Multiple Areas";
+}
+
+
+
+<h4>Multiple Areas </h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MultipleAreas" class="control-label"></label>
+                <textarea asp-for="MultipleAreas" class="form-control"></textarea>
+                <span asp-validation-for="MultipleAreas" class="text-danger"></span>
+                @Html.HiddenFor(modelItem => @Model.CityId)
+                @Html.HiddenFor(modelItem => @Model.CityName)
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+

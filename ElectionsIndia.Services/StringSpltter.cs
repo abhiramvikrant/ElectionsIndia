@@ -27,7 +27,7 @@ namespace ElectionsIndia.Services
             { var obj = model[i].Split(',');
                 if (obj.Length == 2)
                 {
-                    returnModel.Add(new SplitterReturnViewModel { Name = obj[0], IsActive = Convert.ToBoolean(obj[1]) });
+                    returnModel.Add(new SplitterReturnViewModel { Name = obj[0].Trim(), IsActive = Convert.ToBoolean(obj[1].Trim()) });
                 }
                 else if (obj.Length == 3)
                 {
