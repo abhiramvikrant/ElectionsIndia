@@ -93,6 +93,11 @@ namespace ElectionsIndia.DataAccess
 
         public virtual DbSet<AreaListCreateViewModel> AreaListCreateViewModel { get; set; }
 
+        public virtual DbSet<ElectionWardListByAreaViewModel> ElectionWardListByAreaViewModel { get; set; }
+
+        public virtual DbSet<ElectionBoothMapViewModel> ElectionBoothMapViewModel { get; set; }
+        public virtual DbSet<ElectionKioskMapViewModel> ElectionKioskMapViewModel { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 

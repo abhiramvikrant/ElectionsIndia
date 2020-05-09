@@ -156,5 +156,8 @@
     <Build Include="dbo\Stored Procedures\DisrtrictListByStateId.sql" />
     <Build Include="dbo\Stored Procedures\CityLisByDistictId.sql" />
     <Build Include="dbo\Stored Procedures\ElectionAreaByCityId.sql" />
+    <Build Include="dbo\Stored Procedures\ElectionWardByAreaId.sql" />
+    <Build Include="dbo\Stored Procedures\ElectionKioskByBoothId.sql" />
+    <Build Include="dbo\Stored Procedures\ElectionBoothByWardId.sql" />
   </ItemGroup>
 </Project>

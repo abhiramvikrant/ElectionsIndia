@@ -14,6 +14,9 @@ namespace ElectionsIndia.Services
             services.AddTransient<IStringSplitter, StringSpltter>();
             services.AddTransient<ICityService, CityServices>();
             services.AddTransient<IAreaService, AreaService>();
+            services.AddTransient<IWardService, WardService>();
+            services.AddTransient<IBoothService, BoothService>();
+            services.AddTransient<IKioskService, KioskService>();
             return services;
         }
     }
