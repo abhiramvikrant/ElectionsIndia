@@ -9,7 +9,7 @@ namespace ElectionsIndia.Models.ViewModels
     {[Key]
         public int ElectionWardId { get; set; }
         public string Name { get; set; }
-        public bool IsActvie { get; set; }
+        public bool IsActive { get; set; }
 
         public int ElectionAreaId { get; set; }
 

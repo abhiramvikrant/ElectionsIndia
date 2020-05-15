@@ -25,8 +25,9 @@ namespace Elections.UI.MVC.Controllers
         private readonly IRepository<ElectionArea> areaRepo;
         private readonly IStringSplitter strSplitter;
         private readonly ElectionsIndiaContext _db;
+        #region CTOR
         public AreasController(IRepository<AreaListViewModel> alistrepo, ElectionsIndiaContext db, IRepository<States> staterepo, IRepository<Languages> langrepo, IRepository<Countries> courepo, IRepository<City> city, IRepository<ElectionArea> earepo
-            ,IAreaService areaService, IRepository<ElectionArea> areaRepo, IStringSplitter strSplitter)
+           , IAreaService areaService, IRepository<ElectionArea> areaRepo, IStringSplitter strSplitter)
         {
             _alistrepo = alistrepo;
             _db = db;
@@ -38,7 +39,8 @@ namespace Elections.UI.MVC.Controllers
             this.areaService = areaService;
             this.areaRepo = areaRepo;
             this.strSplitter = strSplitter;
-        }
+        } 
+        #endregion
         public IActionResult Index()
         {
             var alist = _db.AreaListViewModel.FromSqlInterpolated($"EXEC ElectionAreaList");
@@ -119,8 +121,9 @@ namespace Elections.UI.MVC.Controllers
         }
         #endregion
 
-       [HttpGet]
-       public async Task<IActionResult> MapAreas(int CityId, string CityName)
+        #region Map Areas
+        [HttpGet]
+        public async Task<IActionResult> MapAreas(int CityId, string CityName)
         {
             var areaList = await areaService.GetAreaByCityId(CityId).ConfigureAwait(true);
             foreach (var item in areaList)
@@ -142,7 +145,7 @@ namespace Elections.UI.MVC.Controllers
             SetViewBags(iAreaId, iAreaName);
             List<string> messages = new List<string>();
             for (int i = 0; i < model.Count; i++)
-            { 
+            {
                 var area = areaRepo.GetByID(model[i].ElectionAreaId);
                 if (model[i].BelongsToCity == true && model[i].CityId == -1)
                 {
@@ -187,7 +190,9 @@ namespace Elections.UI.MVC.Controllers
             SetViewBags(CityId, CityName);
             return View();
         }
+        #endregion
 
+        #region Multiple Areas
         [HttpPost]
         public IActionResult MultipleAreas(MultiplAreaViewModel model)
         {
@@ -201,8 +206,9 @@ namespace Elections.UI.MVC.Controllers
                 int result = areaRepo.Create(newArea);
 
             }
-            return RedirectToAction("MapAreas", new { CityId=model.CityId, CityName = model.CityName });
+            return RedirectToAction("MapAreas", new { CityId = model.CityId, CityName = model.CityName });
 
-        }
+        } 
+        #endregion
     }
 }

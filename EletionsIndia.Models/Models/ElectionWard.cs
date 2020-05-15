@@ -14,7 +14,7 @@ namespace ElectionsIndia.Models
         public int ElectionWardId { get; set; }
         public string Name { get; set; }
         public bool IsActive { get; set; }
-        public int ElectionAreaId { get; set; }
+        public int? ElectionAreaId { get; set; }
         public string StateLanguageName { get; set; }
         public string StateLanguageName_1 { get; set; }
         public string StateLanguageName_2 { get; set; }

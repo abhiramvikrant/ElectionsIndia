@@ -88,8 +88,11 @@
                 @Html.DisplayFor(modelItem => item.CityName)
             </td>
             <td>
-                <a asp-controller="Areas" asp-action="Edit" asp-route-electionareaid="@item.ElectionAreaID" title="Edit" ><span class="fa   "></span></a>
+                <a asp-controller="Areas" asp-action="Edit" asp-route-electionareaid="@item.ElectionAreaID" title="Edit" ><span class="fa fa-pencil"></span></a>
                 
+            </td>
+            <td>
+            <a asp-controller="electionward" asp-action="mapwards" asp-route-areaid="@item.ElectionAreaID"asp-route-areaname="@item.AreaName" class="btn btn-primary">Manage Wards</a>
             </td>
             <td>
                 <a asp-controller="Areas" asp-action="Delete" asp-route-electionareaid="@item.ElectionAreaID" title="Delete"><span class="fa fa-trash"></span></a>

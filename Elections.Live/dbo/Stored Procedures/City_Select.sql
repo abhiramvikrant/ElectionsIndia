@@ -7,13 +7,7 @@ AS
             City.Name, 
             City.IsActive, 
             City.DistrictID, 
-            City.StateLanguageName, 
-            City.StateLanguageName_1, 
-            City.StateLanguageName_2, 
-            City.StateLanguageName_3, 
-            City.StateLanguagename_4, 
-            City.StateLanguageName_5, 
-            States.Name AS StateName, 
+           States.Name AS StateName, 
             Districts.Name AS DistrictName, 
             Countries.Name AS CountryName
      FROM City

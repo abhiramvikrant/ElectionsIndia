@@ -1,0 +1,33 @@
+﻿@model IList<ElectionWardListByAreaViewModel>
+
+@{
+    ViewData["Title"] = "Map Wards";
+}
+
+<h4>Map Wards</h4>
+
+<form method="post">
+
+    <div class="container">
+        @for (int i = 0; i < Model.Count; i++)
+        {
+        <div class="row">
+            <div class="col-md-1 m-0 p-0">
+                @Html.CheckBoxFor(modelItem => Model[i].BelongsToArea)
+            </div>
+            <div class="col-md-6 m-1 p-1 text-left">
+                @Html.DisplayFor(modelItem => Model[i].Name)
+                @Html.HiddenFor(modelItem => Model[i].ElectionWardId)
+                @Html.HiddenFor(modelItem => Model[i].IsActive)
+                @Html.HiddenFor(modelItem => Model[i].ElectionAreaId)
+                @Html.HiddenFor(modelItem => Model[i].ElectionArea)
+                @Html.HiddenFor(modelItem => Model[i].InitialAreaId)
+                @Html.HiddenFor(modelItem => Model[i].InitialAreaName)
+            </div>
+        </div>
+
+        }
+    </div>
+        
+    <div> <button class="btn btn-info" asp-action="MapWards" type="submit">Update!</button></div>
+</form>
